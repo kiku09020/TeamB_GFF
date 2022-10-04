@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
   - Stage
-  - Item
+  - Fish
   layers:
   - Default
   - TransparentFX
