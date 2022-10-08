@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Stage
   - Fish
+  - MainCat
+  - SubCat
   layers:
   - Default
   - TransparentFX

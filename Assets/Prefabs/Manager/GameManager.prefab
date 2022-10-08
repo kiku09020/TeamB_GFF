@@ -408,6 +408,8 @@ GameObject:
   - component: {fileID: 7301723815640993457}
   - component: {fileID: 8630321999919817103}
   - component: {fileID: 4837259326454078011}
+  - component: {fileID: 7807528152980635978}
+  - component: {fileID: 1837779408392680468}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -469,6 +471,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4044f237baef934a813bfcf578ead3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7807528152980635978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137223664432990018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1767f290eac2134e9eb169f14e71a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  catCnt: 0
+  catPref: {fileID: 7899309465708641873, guid: 940d95df7dd54644d85a4001be802da3, type: 3}
+--- !u!114 &1837779408392680468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137223664432990018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad762923dc87b84bad1eb5b476209b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  catPosY: -14.5
+  genPosX: 12
+  idlePosX: 6
+  jumpPosX: 0
+  outScrnDown: -25
+  outScrnUp: 25
+  moveSpd: 0.5
+  minJumpY: 600
+  existMainCat: 0
 --- !u!1 &137223666008951008
 GameObject:
   m_ObjectHideFlags: 0
