@@ -39,7 +39,7 @@ public class DebugManager : MonoBehaviour
     {
         // シーン再読み込み
         if (Input.GetKeyDown(KeyCode.R)) {
-            scene.LoadScene(SceneController.Load.Now);
+            scene.ReloadScene();
         }
 
         if (Input.GetKeyDown(KeyCode.P)) {

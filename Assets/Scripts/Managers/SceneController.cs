@@ -30,17 +30,20 @@ public class SceneController : MonoBehaviour
 
         nowScene.Scene = SceneManager.GetActiveScene();
         nowScene.SetInfo();
+
+        sceneCnt=SceneManager.sceneCount;
     }
 
 //-------------------------------------------------------------------
     // 次のシーンを読み込む
-    void LoadNextScene() 
+    public void LoadNextScene() 
     {
         var index = nowScene.Index;
 
         // シーン番号が合計のシーン数より小さいとき、読み込み
         if (index < sceneCnt) {
             SceneManager.LoadScene(index + 1);
+            Time.timeScale=1;
         }
 
         // 範囲外のシーン番号が指定された場合、エラー処理
@@ -50,12 +53,13 @@ public class SceneController : MonoBehaviour
     }
 
     // 前のシーンを読み込む
-    void LoadPrevScene() {
+    public void LoadPrevScene() {
         var index = nowScene.Index;
 
         // シーン番号が0より大きいとき、読み込む
 		if (index > 0) {
             SceneManager.LoadScene(index - 1);
+            Time.timeScale=1;
 		}
 
         // 範囲外のシーン番号が指定された場合、エラー処理
@@ -64,35 +68,11 @@ public class SceneController : MonoBehaviour
 		}
     }
 
-    //-------------------------------------------------------------------
-    // ロード番号に応じたシーンのロード
-    public void LoadScene(Load loadNum)
+    public void ReloadScene()
     {
-        switch (loadNum) {
-            case Load.Now:
-                SceneManager.LoadScene(nowScene.Index);
-                break;
+        SceneManager.LoadScene(nowScene.Index);
 
-            case Load.Next:
-                LoadNextScene();
-                break;
-
-            case Load.Prev:
-                LoadPrevScene();
-                break;
-        }
-    }
-
-    // シーン名指定して読み込む
-    public void LoadScene(string sceneName) 
-    { 
-        SceneManager.LoadScene(sceneName); 
-    }
-
-    // シーン番号指定して読み込む
-    public void LoadScene(int sceneIndex)
-    {
-        SceneManager.LoadScene(sceneIndex); 
+        Time.timeScale=1;
     }
 
     //-------------------------------------------------------------------
