@@ -1,23 +1,29 @@
 public class AudioEnum {
     // AudioSourceの列挙
-    public enum Enm_AudSrc {
+    public enum AudSrc {
         BGM,
-        SE_Chara,
+        SE_Cat,
+        SE_Fish,
         SE_UI,
     }
 
     // BGM
-    public enum Enm_BGM {
+    public enum BGM {
         bgm1,
     }
 
-    // SE_Chara
-    public enum Enm_SE_Chara {
+    // 猫
+    public enum SE_Cat {
         jump,
     }
 
-    // SE_UI
-    public enum Enm_SE_UI {
+    // 魚
+    public enum SE_Fish {
+        eaten,
+    }
+
+    // UI
+    public enum SE_UI {
         click,
         celect,
         cancel,

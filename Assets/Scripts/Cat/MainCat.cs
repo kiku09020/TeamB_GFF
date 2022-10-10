@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* ジャンプする猫の処理 */
 public class MainCat : MonoBehaviour
 {
     /* 値 */
@@ -20,11 +21,12 @@ public class MainCat : MonoBehaviour
     {
         /* オブジェクト取得 */
         GameObject gmObj = GameObject.Find("GameManager");
+        GameObject charaObj = gmObj.transform.Find("CharaManager").gameObject;
 
         /* コンポーネント取得 */
         arrow = GetComponent<JumpArrow>();
         cat = GetComponent<Cat>();
-        par = gmObj.GetComponent<CatParameter>();
+        par = charaObj.GetComponent<CatParameter>();
 
         col = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
@@ -45,7 +47,7 @@ public class MainCat : MonoBehaviour
             cat.jumpState = Cat.JumpedState.Jump;
 
             rb.AddForce(arrow.TapVector);            // ぶっ飛ばす
-            cat.PlaySE(AudioEnum.Enm_SE_Chara.jump);
+            cat.PlaySE(AudioEnum.SE_Cat.jump);
         }
     }
 

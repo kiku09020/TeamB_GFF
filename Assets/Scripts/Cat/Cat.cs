@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* 全ての猫の処理 */
 public class Cat : MonoBehaviour
 {
     /* 値 */
@@ -14,7 +15,7 @@ public class Cat : MonoBehaviour
 
     // 猫の状態
     public enum State {
-        OutOfScrn,      // 画面外
+        OutScrn,      // 画面外
         Wait,           // 待機中
         Ready,          // ジャンプ前
         Jumped,         // ジャンプ後
@@ -50,6 +51,7 @@ public class Cat : MonoBehaviour
     {
         /* オブジェクト取得 */
         GameObject gmObj = GameObject.Find("GameManager");
+        GameObject charaObj = gmObj.transform.Find("CharaManager").gameObject;
         GameObject audObj = gmObj.transform.Find("AudioManager").gameObject;
 
         /* コンポーネント取得 */
@@ -57,7 +59,7 @@ public class Cat : MonoBehaviour
 
         aud = audObj.GetComponent<AudioManager>();
 
-        par = gmObj.GetComponent<CatParameter>();
+        par = charaObj.GetComponent<CatParameter>();
         jump = GetComponent<MainCat>();
         
         /* 初期化 */
@@ -87,9 +89,9 @@ public class Cat : MonoBehaviour
 
     //-------------------------------------------------------------------
     // 効果音再生
-    public void PlaySE(AudioEnum.Enm_SE_Chara se)
+    public void PlaySE(AudioEnum.SE_Cat se)
     {
-        aud.PlaySE(AudioEnum.Enm_AudSrc.SE_Chara, (int)se);
+        aud.PlaySE(AudioEnum.AudSrc.SE_Cat, (int)se);
     }
 
 //-------------------------------------------------------------------

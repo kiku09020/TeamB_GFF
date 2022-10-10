@@ -35,11 +35,11 @@ public class ButtonManager : MonoBehaviour
     {
         switch (audType) {
             case Audio.Decision:
-                aud.PlaySE(AudioEnum.Enm_AudSrc.SE_UI, (int)AudioEnum.Enm_SE_UI.click);
+                aud.PlaySE(AudioEnum.AudSrc.SE_UI, (int)AudioEnum.SE_UI.click);
                 break;
 
             case Audio.Cancel:
-                aud.PlaySE(AudioEnum.Enm_AudSrc.SE_UI, (int)AudioEnum.Enm_SE_UI.cancel);
+                aud.PlaySE(AudioEnum.AudSrc.SE_UI, (int)AudioEnum.SE_UI.cancel);
                 break;
         }
     }

@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 4418413917615015814}
   - component: {fileID: 986096279556895062}
   - component: {fileID: 1018528304296198574}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cat
-  m_TagString: MainCat
+  m_TagString: Cat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1715069429
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0508da71b480c31489da4b7ef119ec54, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -137,6 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd0088ab98f76e4a9e2f57489e1c08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
+  jumpState: 0
 --- !u!114 &4418413917615015814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,4 +175,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c07fc0ed6aa7b049bcd8be97d013dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpd: 0.1

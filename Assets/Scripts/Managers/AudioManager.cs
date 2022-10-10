@@ -7,7 +7,8 @@ public class AudioManager : MonoBehaviour {
 
     [Header("AudioClip")]
     [SerializeField] List<AudioClip> clps_BGM;
-    [SerializeField] List<AudioClip> clps_SE_Chara;
+    [SerializeField] List<AudioClip> clps_SE_Cat;
+    [SerializeField] List<AudioClip> clps_SE_Fish;
     [SerializeField] List<AudioClip> clps_SE_UI;
     List<List<AudioClip>> clpLists;
 
@@ -15,17 +16,17 @@ public class AudioManager : MonoBehaviour {
     void Start()
     {
         // List<List<AudioClip>>にList<AudioClip>を格納
-        clpLists = new List<List<AudioClip>>() { clps_BGM, clps_SE_Chara, clps_SE_UI };
+        clpLists = new List<List<AudioClip>>() { clps_BGM, clps_SE_Cat, clps_SE_UI };
 
         // BGM再生
-        PlayBGM(AudioEnum.Enm_BGM.bgm1, true);
+        PlayBGM(AudioEnum.BGM.bgm1, true);
     }
 
     //-------------------------------------------------------------------
     // BGM再生
-    public void PlayBGM(AudioEnum.Enm_BGM bgm, bool loop)
+    public void PlayBGM(AudioEnum.BGM bgm, bool loop)
     {
-        AudioSource audSrc = AudSrcs[(int)AudioEnum.Enm_AudSrc.BGM];
+        AudioSource audSrc = AudSrcs[(int)AudioEnum.AudSrc.BGM];
 
         // ループの有無
         audSrc.loop = (loop) ? true : false;
@@ -38,7 +39,7 @@ public class AudioManager : MonoBehaviour {
     }
 
     // SE再生
-    public void PlaySE(AudioEnum.Enm_AudSrc audSrcType, int se)
+    public void PlaySE(AudioEnum.AudSrc audSrcType, int se)
     {
         AudioSource audSrc = AudSrcs[(int)audSrcType];         // AudioSource
         AudioClip clip = clpLists[(int)audSrcType][se];    // AudioClipをclpListから参照する
@@ -48,7 +49,7 @@ public class AudioManager : MonoBehaviour {
 
     //-------------------------------------------------------------------
     // 音声の一時停止(AudioSource指定)
-    public void PauseAudio(bool pause, AudioEnum.Enm_AudSrc audSrc)
+    public void PauseAudio(bool pause, AudioEnum.AudSrc audSrc)
     {
         // 一時停止
         if (pause) {

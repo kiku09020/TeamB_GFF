@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* 猫のパラメーター。(GameManager) */
 public class CatParameter : MonoBehaviour
 {
     /* 値 */
@@ -16,8 +17,8 @@ public class CatParameter : MonoBehaviour
     [SerializeField, Tooltip("画面外(上)")]    float outScrnUp;
 
     [Header("速度")]
-    [SerializeField, Tooltip("移動速度")] float moveSpd;
-    [SerializeField, Tooltip("最小ジャンプ力(Y)")] float minJumpY;
+    [SerializeField, Tooltip("移動速度"),Range(0.1f,0.5f)] float moveSpd;
+    [SerializeField, Tooltip("最小ジャンプ力(Y)")] float jumpForceMin;
 
     /* フラグ */
     public bool existMainCat;      // 準備中の猫がいるかどうが
@@ -28,7 +29,7 @@ public class CatParameter : MonoBehaviour
     public Vector2 JumpPos { get => new Vector2(jumpPosX, catPosY); }       // ジャンプ位置
 
     public float MoveSpd { get => moveSpd; }
-    public float MinJumpY { get => minJumpY; }
+    public float MinJumpY { get => jumpForceMin; }
 
     /* コンポーネント取得用 */
 

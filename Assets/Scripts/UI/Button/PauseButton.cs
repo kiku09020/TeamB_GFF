@@ -32,7 +32,7 @@ public class PauseButton : ButtonManager
 //-------------------------------------------------------------------
     public void Pause(bool pause)
     {
-        gm.IsPause = pause;     // 停止中フラグ
+        gm.isPause = pause;     // 停止中フラグ
         canvas.Pause(pause);    // キャンバスのフラグ
         aud.PauseAudio(pause);  // 音声一時停止
 

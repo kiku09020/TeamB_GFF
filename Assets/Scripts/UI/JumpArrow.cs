@@ -28,9 +28,10 @@ public class JumpArrow : MonoBehaviour
     {
         /* オブジェクト取得 */
         GameObject gmObj = GameObject.Find("GameManager");
+        GameObject charaObj = gmObj.transform.Find("CharaManager").gameObject;
 
         /* コンポーネント取得 */
-        par = gmObj.GetComponent<CatParameter>();
+        par = charaObj.GetComponent<CatParameter>();
 
         /* 初期化 */
         

@@ -6,8 +6,8 @@ TagManager:
   tags:
   - Stage
   - Fish
-  - MainCat
-  - SubCat
+  - Cat
+  - Fugu
   layers:
   - Default
   - TransparentFX
@@ -17,8 +17,8 @@ TagManager:
   - UI
   - 
   - Player
-  - Enemy
-  - Item
+  - Cat
+  - Fish
   - Stage
   - 
   - 
@@ -45,15 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 1715069429
-    locked: 0
-  - name: Enemy
-    uniqueID: 1424137281
-    locked: 0
-  - name: Item
-    uniqueID: 3105060685
-    locked: 0
   - name: Stage
     uniqueID: 832929925
+    locked: 0
+  - name: Fish
+    uniqueID: 3105060685
+    locked: 0
+  - name: Cat
+    uniqueID: 1715069429
     locked: 0
