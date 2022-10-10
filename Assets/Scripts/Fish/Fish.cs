@@ -6,9 +6,8 @@ using UnityEngine;
 public abstract class Fish : MonoBehaviour
 {
     /* 値 */
-    [SerializeField] protected int score;        // スコア
-    [SerializeField] protected Type type;        // タイプ
-    protected float spd;        // 速度
+    [SerializeField] protected int score;       // スコア
+    [SerializeField] protected Type type;       // タイプ
 
     // 魚の種類
     protected enum Type {
@@ -17,23 +16,38 @@ public abstract class Fish : MonoBehaviour
         rare,       // レア
     }
 
+    /* フラグ */
+    bool isoutScrn;
+
     /* コンポーネント取得用 */
     AudioManager aud;
+
+    FishGenerater gen;
+
 
     //-------------------------------------------------------------------
     protected void Init()
     {
         GameObject gmObj = GameObject.Find("GameManager");
         GameObject audObj = gmObj.transform.Find("AudioManager").gameObject;
+        GameObject charaObj = gmObj.transform.Find("CharaManager").gameObject;
 
         aud = audObj.GetComponent<AudioManager>();
+
+        gen = charaObj.GetComponent<FishGenerater>();
     }
 
     // 落下処理
     protected void Fall()
     {
-        transform.Translate(new Vector2(0, -0.1f));
+        transform.Translate(new Vector2(0, -gen.FallSpd));
     }
+
+    // 画面外判定
+    protected void CheckOutScrn()
+    {
+        
+	}
 
     // 効果音の指定
     protected void PlayEatenSound(AudioEnum.SE_Fish se)
@@ -41,6 +55,7 @@ public abstract class Fish : MonoBehaviour
         aud.PlaySE(AudioEnum.AudSrc.SE_Fish, (int)se);
     }
 
+    //-------------------------------------------------------------------
     // 猫に食われたときの処理
     protected virtual void Eaten()
     {
@@ -50,7 +65,7 @@ public abstract class Fish : MonoBehaviour
     }
 
     // 衝突時
-	protected void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerEnter2D(Collider2D col)
 	{
         if (col.gameObject.tag == "Cat") {
             Eaten();

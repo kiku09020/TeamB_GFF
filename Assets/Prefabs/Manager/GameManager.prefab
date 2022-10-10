@@ -606,7 +606,7 @@ MonoBehaviour:
   genPosY: 20
   genPrefs:
   - {fileID: 5595158151744463373, guid: e85a4b919276c63419570652e9b0d268, type: 3}
-  fallSpd: 0
+  fallSpdStart: 0.1
 --- !u!1001 &5664595408795085145
 PrefabInstance:
   m_ObjectHideFlags: 0

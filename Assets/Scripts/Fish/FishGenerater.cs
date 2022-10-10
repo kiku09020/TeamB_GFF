@@ -9,7 +9,7 @@ public class FishGenerater : MonoBehaviour
     [SerializeField, Tooltip("開始時の生成インターバル")]   float intervalStart;
     [SerializeField, Tooltip("最小の生成インターバル")]     float intervalMin;
     [SerializeField, Tooltip("生成インターバルを減らす量")] float intervalDecVal;
-    float intervalNow;      // 現在の生成インターバル
+    float nowGenInterval;      // 現在の生成インターバル
     float timer;
 
     [Header("生成位置")]
@@ -20,7 +20,11 @@ public class FishGenerater : MonoBehaviour
 
     [Header("生成物")]
     [SerializeField,Tooltip("生成するもの")] List<GameObject> genPrefs;
-    [SerializeField, Tooltip("落下速度")] float fallSpd;
+    [SerializeField, Tooltip("最初の落下速度")] float fallSpdStart;
+    float nowFallSpd;       // 現在の落下速度
+
+    /* プロパティ */
+    public float FallSpd { get => nowFallSpd; }
 
     /* コンポーネント取得用 */
 
@@ -36,9 +40,8 @@ public class FishGenerater : MonoBehaviour
 
 
         /* 初期化 */
-        intervalNow = intervalStart;
-
-        print(intervalNow);
+        nowGenInterval = intervalStart;
+        nowFallSpd = fallSpdStart;
     }
 
 //-------------------------------------------------------------------
@@ -48,16 +51,16 @@ public class FishGenerater : MonoBehaviour
     }
 
 //-------------------------------------------------------------------
-
+    // 魚の生成
     void Generate()
     {
-        if (timer >= intervalNow) {
+        if (timer >= nowGenInterval) {
             // 生成位置
             genPosX = Random.Range(-genXRange, genXRange);
             genPos = new Vector2(genPosX, genPosY);
 
             // 生成するものの番号
-            int genObjNum = Random.Range(0, genPrefs.Count);
+            int genObjNum = Random.Range(0, genPrefs.Count - 1);
 
             // 生成
             Instantiate(genPrefs[genObjNum], genPos, Quaternion.identity);
@@ -68,4 +71,10 @@ public class FishGenerater : MonoBehaviour
         // タイマー加算
         timer += Time.deltaTime;
     }
+
+    // 落下速度の変更
+    void ChangeFallSpd()
+    {
+        
+	}
 }
