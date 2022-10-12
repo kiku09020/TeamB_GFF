@@ -40,6 +40,7 @@ public class DebugManager : MonoBehaviour
         // シーン再読み込み
         if (Input.GetKeyDown(KeyCode.R)) {
             scene.LoadScene(SceneController.Load.Now);
+            Time.timeScale = 1;
         }
 
         if (Input.GetKeyDown(KeyCode.P)) {
@@ -51,5 +52,11 @@ public class DebugManager : MonoBehaviour
     void Log()
     {
 
+    }
+
+    // リセットボタン
+    public void ResetButton()
+    {
+        
     }
 }

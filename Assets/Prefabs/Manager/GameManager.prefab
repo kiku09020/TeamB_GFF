@@ -602,16 +602,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a4db164924019e46983f2916feeb50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intervalStart: 0.5
+  intervalStart: 1.5
   intervalMin: 0.5
   intervalDecVal: 0
-  genXRange: 10
-  genPosY: 20
+  genXRange: 8
+  genPosY: 30
   genPrefs:
   - {fileID: 5595158151744463373, guid: e85a4b919276c63419570652e9b0d268, type: 3}
   - {fileID: 825683738461295673, guid: dc22d8806417c064dbf68c3b591f439b, type: 3}
   - {fileID: 5595158151744463373, guid: 98b960f5736fd0c4aba0d223af9fa686, type: 3}
-  genProb_Fugu: 0.1
+  genProb_Fugu: 0.15
   genProb_Rare: 0.01
 --- !u!114 &7600844812621097769
 MonoBehaviour:

@@ -13,16 +13,16 @@ public class GameManager : MonoBehaviour
 
     /* プロパティ */
     CanvasManager cnvs;
+    AudioManager aud;
 
 //-------------------------------------------------------------------
     void Start()
     {
         /* オブジェクト取得 */
 
-
         /* コンポーネント取得 */
         cnvs = transform.Find("UIManager").GetComponent<CanvasManager>();
-
+        aud = transform.Find("AudioManager").GetComponent<AudioManager>();
         /* 初期化 */
         
     }
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     void GameOver()
     {
         cnvs.GameOver();
-
+        aud.PauseAudio(true);
         Time.timeScale = 0;
     }
 }

@@ -24,7 +24,7 @@ public class MainCat : MonoBehaviour
         GameObject charaObj = gmObj.transform.Find("CharaManager").gameObject;
 
         /* コンポーネント取得 */
-        arrow = GetComponent<JumpArrow>();
+        arrow = transform.Find("Arrow").gameObject.GetComponent<JumpArrow>();
         cat = GetComponent<Cat>();
         par = charaObj.GetComponent<CatParameter>();
 
