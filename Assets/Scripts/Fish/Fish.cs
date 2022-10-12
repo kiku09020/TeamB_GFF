@@ -9,44 +9,61 @@ public abstract class Fish : MonoBehaviour
     [SerializeField] protected int score;       // スコア
     [SerializeField] protected Type type;       // タイプ
 
+    float nowFallSpd;                           // 現在の落下速度
+
     // 魚の種類
-    protected enum Type {
+    public enum Type {
         normal,     // 通常
         fugu,       // ふぐ
         rare,       // レア
     }
 
-    /* フラグ */
-    bool isoutScrn;
-
     /* コンポーネント取得用 */
     AudioManager aud;
 
-    FishGenerater gen;
+    FishParameter par;
 
 
     //-------------------------------------------------------------------
+    protected virtual void Start()
+    {
+        Init();
+    }
+
+    void FixedUpdate()
+    {
+        Fall();
+        CheckOutScrn();
+    }
+
     protected void Init()
     {
+        /* オブジェクト取得 */
         GameObject gmObj = GameObject.Find("GameManager");
         GameObject audObj = gmObj.transform.Find("AudioManager").gameObject;
         GameObject charaObj = gmObj.transform.Find("CharaManager").gameObject;
 
+        /* コンポーネント取得 */
         aud = audObj.GetComponent<AudioManager>();
 
-        gen = charaObj.GetComponent<FishGenerater>();
+        par = charaObj.GetComponent<FishParameter>();
+
+        /* 初期化 */
+        nowFallSpd = par.FallSpdStart;      // 落下速度
     }
 
     // 落下処理
     protected void Fall()
     {
-        transform.Translate(new Vector2(0, -gen.FallSpd));
+        transform.Translate(new Vector2(0, -nowFallSpd));
     }
 
     // 画面外判定
     protected void CheckOutScrn()
     {
-        
+        if (transform.position.y < par.DelY) {
+            Destroy(gameObject);
+        }
 	}
 
     // 効果音の指定
@@ -67,7 +84,10 @@ public abstract class Fish : MonoBehaviour
     // 衝突時
     void OnTriggerEnter2D(Collider2D col)
 	{
-        if (col.gameObject.tag == "Cat") {
+        Cat.State catState = col.gameObject.GetComponent<Cat>().state;
+
+        // ジャンプしてるネコに当たったときのみ
+        if (col.gameObject.tag == "Cat" && catState == Cat.State.Jumped) {
             Eaten();
         }
     }

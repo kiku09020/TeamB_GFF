@@ -20,14 +20,15 @@ public class FishGenerater : MonoBehaviour
 
     [Header("生成物")]
     [SerializeField,Tooltip("生成するもの")] List<GameObject> genPrefs;
-    [SerializeField, Tooltip("最初の落下速度")] float fallSpdStart;
-    float nowFallSpd;       // 現在の落下速度
+
+    [Header("生成確率")]
+    [SerializeField] float genProb_Fugu;
+    [SerializeField] float genProb_Rare;
+    
 
     /* プロパティ */
-    public float FallSpd { get => nowFallSpd; }
 
     /* コンポーネント取得用 */
-
 
 
 //-------------------------------------------------------------------
@@ -37,11 +38,12 @@ public class FishGenerater : MonoBehaviour
 
 
         /* コンポーネント取得 */
-
+        
 
         /* 初期化 */
         nowGenInterval = intervalStart;
-        nowFallSpd = fallSpdStart;
+
+        SetGenProb();
     }
 
 //-------------------------------------------------------------------
@@ -59,17 +61,38 @@ public class FishGenerater : MonoBehaviour
             genPosX = Random.Range(-genXRange, genXRange);
             genPos = new Vector2(genPosX, genPosY);
 
-            // 生成するものの番号
-            int genObjNum = Random.Range(0, genPrefs.Count - 1);
-
-            // 生成
-            Instantiate(genPrefs[genObjNum], genPos, Quaternion.identity);
+            // 確率に応じて生成
+            Instantiate(genPrefs[(int)SetGenProb()], genPos, Quaternion.identity);
 
             timer = 0;
         }
 
         // タイマー加算
         timer += Time.deltaTime;
+    }
+
+    // 生成確率の指定
+    Fish.Type SetGenProb()
+    {
+        Fish.Type genFishType;        // 生成する魚のタイプ
+
+        float random = Random.value;            // 確率
+
+        // レア魚
+        if (random <= genProb_Rare) {
+            genFishType = Fish.Type.rare;
+        }
+
+        // フグ
+        else if (random + genProb_Rare <= genProb_Fugu) {
+            genFishType = Fish.Type.fugu;
+        }
+
+        else {
+            genFishType = Fish.Type.normal;
+        }
+
+        return genFishType;
     }
 
     // 落下速度の変更

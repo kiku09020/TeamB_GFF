@@ -57,7 +57,7 @@ public class MainCat : MonoBehaviour
         // 当たり判定なくす
         if (cat.Vel.y < 0 && cat.jumpState == Cat.JumpedState.Jump) {
             cat.jumpState = Cat.JumpedState.Fall;
-            col.enabled = false;
+            col.isTrigger = true;
         }
     }
 }
