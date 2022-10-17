@@ -20,6 +20,8 @@ public class AudioEnum {
     // 魚
     public enum SE_Fish {
         eaten,
+        damage,
+        rare
     }
 
     // UI

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 /* HP(猫ゲージ)の処理。(GameUICanvas/HP_Back) */
 public class HPManager : MonoBehaviour
@@ -16,15 +15,18 @@ public class HPManager : MonoBehaviour
     /* コンポーネント取得用 */
     RectTransform rect;
 
+    GameManager gm;
 
 //-------------------------------------------------------------------
     void Start()
     {
         /* オブジェクト取得 */
-
+        GameObject gmObj = GameObject.Find("GameManager");
 
         /* コンポーネント取得 */
         rect = GetComponent<RectTransform>();
+
+        gm = gmObj.GetComponent<GameManager>();
 
         /* 初期化 */
         hpNow = hpMax;      // 現在のHPを最大HPにする
@@ -54,6 +56,19 @@ public class HPManager : MonoBehaviour
             Vector3 pos = transform.position - spaceVec;
 
             Instantiate(hpPref,pos,Quaternion.identity,transform);
+        }
+    }
+
+    // ダメージ処理
+    public void Damage()
+    {
+        hpNow--;                // HP減らす
+
+        GenerateHPImage();      // HP画像更新
+
+        // HPなくなったとき、ゲームオーバー
+        if (hpNow <= 0) {
+            gm.gameOver = true;
         }
     }
 }

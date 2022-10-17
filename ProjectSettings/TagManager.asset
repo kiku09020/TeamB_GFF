@@ -48,6 +48,9 @@ TagManager:
   - name: Stage
     uniqueID: 832929925
     locked: 0
+  - name: BG
+    uniqueID: 2370915385
+    locked: 0
   - name: Fish
     uniqueID: 3105060685
     locked: 0

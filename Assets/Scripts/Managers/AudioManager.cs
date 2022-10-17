@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour {
     void Start()
     {
         // List<List<AudioClip>>にList<AudioClip>を格納
-        clpLists = new List<List<AudioClip>>() { clps_BGM, clps_SE_Cat, clps_SE_UI };
+        clpLists = new List<List<AudioClip>>() { clps_BGM, clps_SE_Cat, clps_SE_Fish, clps_SE_UI };
 
         // BGM再生
         PlayBGM(AudioEnum.BGM.bgm1, true);

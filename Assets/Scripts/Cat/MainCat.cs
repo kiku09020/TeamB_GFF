@@ -24,7 +24,7 @@ public class MainCat : MonoBehaviour
         GameObject charaObj = gmObj.transform.Find("CharaManager").gameObject;
 
         /* コンポーネント取得 */
-        arrow = GetComponent<JumpArrow>();
+        arrow = transform.Find("Arrow").gameObject.GetComponent<JumpArrow>();
         cat = GetComponent<Cat>();
         par = charaObj.GetComponent<CatParameter>();
 
@@ -57,7 +57,7 @@ public class MainCat : MonoBehaviour
         // 当たり判定なくす
         if (cat.Vel.y < 0 && cat.jumpState == Cat.JumpedState.Jump) {
             cat.jumpState = Cat.JumpedState.Fall;
-            col.enabled = false;
+            col.isTrigger = true;
         }
     }
 }

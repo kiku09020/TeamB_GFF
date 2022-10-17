@@ -5,30 +5,30 @@ using UnityEngine;
 public class CanvasManager : MonoBehaviour
 {
     /* 値 */
+    GameObject ctrlCnvs;
+    GameObject uiCnvs;
+    GameObject pauseCnvs;
+    GameObject gmovCnvs;
 
-    [Header("Objects")]
-    [SerializeField] GameObject mainCanvasPrfb;     // メインのキャンバス
-    [SerializeField] GameObject eventSystemObj;     // EventSystem
-
-    GameObject mainCanvasInst;      // インスタンス
-
-    GameObject ctrlCanvas;
-    GameObject uiCnavas;
-    GameObject pauseCanvas;
+    /* プロパティ */
+    public GameObject CtrlCanvas { get => ctrlCnvs; }
+    public GameObject GameCanvas { get => uiCnvs; }
 
     //-------------------------------------------------------------------
-    void Start()
+    void Awake()
     {
-        mainCanvasInst = Instantiate(mainCanvasPrfb);       // キャンバスのプレハブをインスタンス化
-        Instantiate(eventSystemObj);                        // EventSystemインスタンス化
+        GameObject mainCanvas = GameObject.Find("MainCanvas");
+        Transform parent = mainCanvas.transform;
 
         /* オブジェクト取得 */
-        ctrlCanvas  = mainCanvasInst.transform.Find("ControllerCanvas").gameObject;
-        uiCnavas    = mainCanvasInst.transform.Find("GameUICanvas").gameObject;
-        pauseCanvas = mainCanvasInst.transform.Find("PauseCanvas").gameObject;
+        ctrlCnvs  = parent.Find("ControllerCanvas").gameObject;
+        uiCnvs    = parent.Find("GameUICanvas").gameObject;
+        pauseCnvs = parent.Find("PauseCanvas").gameObject;
+        gmovCnvs  = parent.Find("GameOverCanvas").gameObject;
 
         /* 初期化 */
-        pauseCanvas.SetActive(false);
+        pauseCnvs.SetActive(false);
+        gmovCnvs.SetActive(false);
     }
 
     //-------------------------------------------------------------------
@@ -36,16 +36,23 @@ public class CanvasManager : MonoBehaviour
     {
         // ポーズ時
         if (pause) {
-            ctrlCanvas.SetActive(false);
-            uiCnavas.SetActive(false);
-            pauseCanvas.SetActive(true);
+            ctrlCnvs.SetActive(false);
+            uiCnvs.SetActive(false);
+            pauseCnvs.SetActive(true);
         }
 
         // ポーズ終了時
         else {
-            ctrlCanvas.SetActive(true);
-            uiCnavas.SetActive(true);
-            pauseCanvas.SetActive(false);
+            ctrlCnvs.SetActive(true);
+            uiCnvs.SetActive(true);
+            pauseCnvs.SetActive(false);
         }
+    }
+
+    public void GameOver()
+    {
+        ctrlCnvs.SetActive(false);
+        uiCnvs.SetActive(false);
+        gmovCnvs.SetActive(true);
     }
 }

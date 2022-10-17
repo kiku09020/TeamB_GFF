@@ -23,6 +23,7 @@ public class Cat : MonoBehaviour
 
     // ジャンプ後の状態
     public enum JumpedState {
+        None,           // ジャンプしてない
         Jump,           // ジャンプ中
         Fall,           // 落下
         Damage,         // ダメージ
@@ -61,8 +62,9 @@ public class Cat : MonoBehaviour
 
         par = charaObj.GetComponent<CatParameter>();
         jump = GetComponent<MainCat>();
-        
+
         /* 初期化 */
+
     }
 
 //-------------------------------------------------------------------
@@ -70,12 +72,20 @@ public class Cat : MonoBehaviour
     {
         pos = transform.position;
 
-        if (state == State.Ready || state == State.Jumped) {
+        StateProc();
+    }
+
+    //-------------------------------------------------------------------
+    // 状態ごとの処理
+    void StateProc()
+    {
+        // ジャンプ中
+        if (state == State.Jumped && jumpState == JumpedState.Jump) {
             vel = rb.velocity;      // 速度取得
         }
 
         // 主役猫
-        if (state == State.Ready) {
+        if (state == State.Ready && jumpState == JumpedState.None) {
             jump.Jump();
         }
 
@@ -87,7 +97,6 @@ public class Cat : MonoBehaviour
         }
     }
 
-    //-------------------------------------------------------------------
     // 効果音再生
     public void PlaySE(AudioEnum.SE_Cat se)
     {

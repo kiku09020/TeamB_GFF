@@ -5,31 +5,30 @@ using UnityEngine;
 public class Fugu : Fish
 {
     /* 値 */
-    
+
 
     /* コンポーネント取得用 */
+    HPManager hp;
 
-
-
-//-------------------------------------------------------------------
-    void Start()
+    //-------------------------------------------------------------------
+    protected override void Start()
     {
-        /* オブジェクト取得 */ 
-        
+        base.Start();
 
-        /* コンポーネント取得 */     
-
-
-        /* 初期化 */
-        
+        GameObject hpObj = GameObject.Find("HP_Back");
+        hp = hpObj.GetComponent<HPManager>();
     }
 
-//-------------------------------------------------------------------
-    void FixedUpdate()
+
+    // フグ：捕食されたら、ダメージ与える
+    protected override void Eaten()
     {
-        
+        PlayEatenSound(AudioEnum.SE_Fish.damage);
+
+        hp.Damage();
+        Destroy(gameObject);
     }
 
-//-------------------------------------------------------------------
+    //-------------------------------------------------------------------
 
 }
