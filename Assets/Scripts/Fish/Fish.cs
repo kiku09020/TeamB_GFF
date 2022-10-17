@@ -22,7 +22,7 @@ public abstract class Fish : MonoBehaviour
     AudioManager aud;
 
     FishParameter par;
-
+    ScoreManager scoreM;
 
     //-------------------------------------------------------------------
     protected virtual void Start()
@@ -47,6 +47,7 @@ public abstract class Fish : MonoBehaviour
         aud = audObj.GetComponent<AudioManager>();
 
         par = charaObj.GetComponent<FishParameter>();
+        scoreM = gmObj.GetComponent<ScoreManager>();
 
         /* 初期化 */
         nowFallSpd = par.FallSpdStart;      // 落下速度
@@ -76,8 +77,9 @@ public abstract class Fish : MonoBehaviour
     // 猫に食われたときの処理
     protected virtual void Eaten()
     {
-        PlayEatenSound(AudioEnum.SE_Fish.eaten);
+        scoreM.AddScore(score);
 
+        PlayEatenSound(AudioEnum.SE_Fish.eaten);
         Destroy(gameObject);
     }
 

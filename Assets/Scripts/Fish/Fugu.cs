@@ -10,7 +10,6 @@ public class Fugu : Fish
     /* コンポーネント取得用 */
     HPManager hp;
 
-
     //-------------------------------------------------------------------
     protected override void Start()
     {
@@ -27,7 +26,6 @@ public class Fugu : Fish
         PlayEatenSound(AudioEnum.SE_Fish.damage);
 
         hp.Damage();
-
         Destroy(gameObject);
     }
 

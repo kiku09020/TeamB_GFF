@@ -5,25 +5,20 @@ using UnityEngine;
 public class CanvasManager : MonoBehaviour
 {
     /* 値 */
-
-    [Header("Objects")]
-    [SerializeField] GameObject mainCanvasPrfb;     // メインのキャンバス
-    [SerializeField] GameObject eventSystemPrfb;     // EventSystem
-
-    GameObject mainCanvasInst;      // インスタンス
-
     GameObject ctrlCnvs;
     GameObject uiCnvs;
     GameObject pauseCnvs;
     GameObject gmovCnvs;
 
+    /* プロパティ */
+    public GameObject CtrlCanvas { get => ctrlCnvs; }
+    public GameObject GameCanvas { get => uiCnvs; }
+
     //-------------------------------------------------------------------
     void Awake()
     {
-        mainCanvasInst = Instantiate(mainCanvasPrfb);       // キャンバスのプレハブをインスタンス化
-        Instantiate(eventSystemPrfb);                        // EventSystemインスタンス化
-
-        Transform parent = mainCanvasInst.transform;
+        GameObject mainCanvas = GameObject.Find("MainCanvas");
+        Transform parent = mainCanvas.transform;
 
         /* オブジェクト取得 */
         ctrlCnvs  = parent.Find("ControllerCanvas").gameObject;
