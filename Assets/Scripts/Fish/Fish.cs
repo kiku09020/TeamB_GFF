@@ -6,10 +6,11 @@ using UnityEngine;
 public abstract class Fish : MonoBehaviour
 {
     /* 値 */
-    [SerializeField] protected int score;       // スコア
-    [SerializeField] protected Type type;       // タイプ
+    [SerializeField] protected int      score;      // スコア
+    [SerializeField] protected float    time;       // 増加、減少するタイム
+    [SerializeField] protected Type     type;       // タイプ
 
-    float nowFallSpd;                           // 現在の落下速度
+    float nowFallSpd;       // 現在の落下速度
 
     // 魚の種類
     public enum Type {

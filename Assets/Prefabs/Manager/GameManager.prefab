@@ -413,6 +413,7 @@ GameObject:
   - component: {fileID: 8630321999919817103}
   - component: {fileID: 4837259326454078011}
   - component: {fileID: 2752170879021933480}
+  - component: {fileID: 7176077220294501127}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -489,6 +490,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51243b8d835333444902181cb1112b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7176077220294501127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137223664432990018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3c334117abe31479f146565dde6d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &137223666008951008
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,8 +545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb5d1e058e5c254596cc7eb26f86b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCanvasPrfb: {fileID: 1990490214756881391, guid: d89eb8c2d2a30d04d8a156fe15f7aa99, type: 3}
-  eventSystemPrfb: {fileID: 2206225677878937167, guid: 51376d93141489b4faf1ff212a1846d4, type: 3}
 --- !u!1 &2223382955660871355
 GameObject:
   m_ObjectHideFlags: 0
