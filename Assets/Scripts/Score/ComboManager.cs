@@ -5,7 +5,7 @@ using UnityEngine;
 public class ComboManager : MonoBehaviour
 {
     /* 値 */
-
+    int comboCnt;
 
     /* コンポーネント取得用 */
 
@@ -31,5 +31,8 @@ public class ComboManager : MonoBehaviour
     }
 
 //-------------------------------------------------------------------
-
+    public void AddComboCnt()
+    {
+        
+	}
 }

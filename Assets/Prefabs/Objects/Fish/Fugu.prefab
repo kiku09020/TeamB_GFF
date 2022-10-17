@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 825683738461295672}
   m_Layer: 0
   m_Name: Fugu
-  m_TagString: Fugu
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,4 +113,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: -100
+  time: -3
   type: 1

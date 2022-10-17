@@ -105,6 +105,7 @@ MonoBehaviour:
   clps_SE_Fish:
   - {fileID: 8300000, guid: d89bdee43e02ca6419f9bee5c05a29ab, type: 3}
   - {fileID: 8300000, guid: 367638ed945928647ae7cfb5f1b3c55d, type: 3}
+  - {fileID: 8300000, guid: 367638ed945928647ae7cfb5f1b3c55d, type: 3}
   clps_SE_UI:
   - {fileID: 8300000, guid: 727e1ba9d10659143a3cba6dbc62b9bf, type: 3}
   - {fileID: 8300000, guid: 8be3143336b427f43aa07be0d0ed6b55, type: 3}
@@ -452,7 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102d0f5482fc8df429f231a501d3f366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOver: 0
+  timeUp: 0
   isPause: 0
 --- !u!114 &8630321999919817103
 MonoBehaviour:
@@ -502,6 +503,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3c334117abe31479f146565dde6d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startTime: 5
+  transitionTime: 3
 --- !u!1 &137223666008951008
 GameObject:
   m_ObjectHideFlags: 0

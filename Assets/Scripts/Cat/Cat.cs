@@ -44,6 +44,7 @@ public class Cat : MonoBehaviour
     Rigidbody2D rb;
     AudioManager aud;
 
+    GameManager gm;
     CatParameter par;
     MainCat jump;
 
@@ -57,9 +58,9 @@ public class Cat : MonoBehaviour
 
         /* コンポーネント取得 */
         rb = GetComponent<Rigidbody2D>();
-
         aud = audObj.GetComponent<AudioManager>();
 
+        gm = gmObj.GetComponent<GameManager>();
         par = charaObj.GetComponent<CatParameter>();
         jump = GetComponent<MainCat>();
 
@@ -70,9 +71,10 @@ public class Cat : MonoBehaviour
 //-------------------------------------------------------------------
     void LateUpdate()
     {
-        pos = transform.position;
-
-        StateProc();
+        if (!gm.timeUp) {
+            pos = transform.position;
+            StateProc();
+        }
     }
 
     //-------------------------------------------------------------------
@@ -110,6 +112,10 @@ public class Cat : MonoBehaviour
         if (col.gameObject.tag == "Stage") {
             isLanding = true;
         }
+
+        else if (col.gameObject.tag == "Fish"){
+            
+		}
     }
 
     // 離れた瞬間

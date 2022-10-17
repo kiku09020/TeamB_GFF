@@ -24,21 +24,25 @@ public class FishGenerater : MonoBehaviour
     [Header("生成確率")]
     [SerializeField] float genProb_Fugu;
     [SerializeField] float genProb_Rare;
-    
+
+    // 生成するオブジェクトの親
+    Transform parent;
 
     /* プロパティ */
 
     /* コンポーネント取得用 */
-
+    GameManager gm;
 
 //-------------------------------------------------------------------
     void Start()
     {
         /* オブジェクト取得 */
-
+        GameObject gmObj = GameObject.Find("GameManager");
+        parent = GameObject.Find("Fish").transform;
 
         /* コンポーネント取得 */
-        
+        gm = gmObj.GetComponent<GameManager>();
+
 
         /* 初期化 */
         nowGenInterval = intervalStart;
@@ -50,19 +54,21 @@ public class FishGenerater : MonoBehaviour
     void FixedUpdate()
     {
         Generate();
+
+        TimeUpDel();
     }
 
 //-------------------------------------------------------------------
     // 魚の生成
     void Generate()
     {
-        if (timer >= nowGenInterval) {
+        if (timer >= nowGenInterval && !gm.timeUp) {
             // 生成位置
             genPosX = Random.Range(-genXRange, genXRange);
             genPos = new Vector2(genPosX, genPosY);
 
             // 確率に応じて生成
-            Instantiate(genPrefs[(int)SetGenProb()], genPos, Quaternion.identity);
+            Instantiate(genPrefs[(int)SetGenProb()], genPos, Quaternion.identity, parent);
 
             timer = 0;
         }
@@ -94,6 +100,16 @@ public class FishGenerater : MonoBehaviour
 
         return genFishType;
     }
+
+    // タイムアップ時に削除する
+    void TimeUpDel()
+    {
+        if(gm.timeUp){
+            foreach(Transform child in parent){
+                Destroy(child.gameObject);
+			}
+		}
+	}
 
     // 落下速度の変更
     void ChangeFallSpd()

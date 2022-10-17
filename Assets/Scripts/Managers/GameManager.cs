@@ -5,15 +5,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     /* 値 */
-    [HideInInspector] public bool gameOver;     // ゲームオーバー
+    [HideInInspector] public bool timeUp;     // タイムアップ
     [HideInInspector] public bool isPause;      // ポーズ中か
 
     /* コンポーネント取得用 */
+    CanvasManager cnvs;
+    AudioManager aud;
 
 
     /* プロパティ */
-    CanvasManager cnvs;
-    AudioManager aud;
 
 //-------------------------------------------------------------------
     void Start()
@@ -30,17 +30,8 @@ public class GameManager : MonoBehaviour
 //-------------------------------------------------------------------
     void FixedUpdate()
     {
-        if (gameOver) {
-            GameOver();
-        }
+
     }
 
 //-------------------------------------------------------------------
-    // ゲームオーバー時の処理
-    void GameOver()
-    {
-        cnvs.GameOver();
-        aud.PauseAudio(true);
-        Time.timeScale = 0;
-    }
 }

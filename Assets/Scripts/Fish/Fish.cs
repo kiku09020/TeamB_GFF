@@ -24,6 +24,10 @@ public abstract class Fish : MonoBehaviour
 
     FishParameter par;
     ScoreManager scoreM;
+    TimeManager timeM;
+
+    protected ScoreManager ScoreM{ get => scoreM; }
+    protected TimeManager TimeM{ get => timeM; }
 
     //-------------------------------------------------------------------
     protected virtual void Start()
@@ -45,10 +49,11 @@ public abstract class Fish : MonoBehaviour
         GameObject charaObj = gmObj.transform.Find("CharaManager").gameObject;
 
         /* コンポーネント取得 */
-        aud = audObj.GetComponent<AudioManager>();
+        aud     = audObj.GetComponent<AudioManager>();
 
-        par = charaObj.GetComponent<FishParameter>();
-        scoreM = gmObj.GetComponent<ScoreManager>();
+        par     = charaObj.GetComponent<FishParameter>();
+        scoreM  = gmObj.GetComponent<ScoreManager>();
+        timeM   = gmObj.GetComponent<TimeManager>();
 
         /* 初期化 */
         nowFallSpd = par.FallSpdStart;      // 落下速度
@@ -69,9 +74,9 @@ public abstract class Fish : MonoBehaviour
 	}
 
     // 効果音の指定
-    protected void PlayEatenSound(AudioEnum.SE_Fish se)
+    protected void PlayEatenSound()
     {
-        aud.PlaySE(AudioEnum.AudSrc.SE_Fish, (int)se);
+        aud.PlaySE(AudioEnum.AudSrc.SE_Fish, (int)type);
     }
 
     //-------------------------------------------------------------------
@@ -79,8 +84,9 @@ public abstract class Fish : MonoBehaviour
     protected virtual void Eaten()
     {
         scoreM.AddScore(score);
+        timeM.AddTime(time);
 
-        PlayEatenSound(AudioEnum.SE_Fish.eaten);
+        PlayEatenSound();
         Destroy(gameObject);
     }
 
