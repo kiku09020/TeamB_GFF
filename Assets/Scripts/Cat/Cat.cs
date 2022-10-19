@@ -45,6 +45,7 @@ public class Cat : MonoBehaviour
     AudioManager aud;
 
     GameManager gm;
+
     CatParameter par;
     MainCat jump;
 
@@ -61,6 +62,7 @@ public class Cat : MonoBehaviour
         aud = audObj.GetComponent<AudioManager>();
 
         gm = gmObj.GetComponent<GameManager>();
+
         par = charaObj.GetComponent<CatParameter>();
         jump = GetComponent<MainCat>();
 
@@ -112,10 +114,6 @@ public class Cat : MonoBehaviour
         if (col.gameObject.tag == "Stage") {
             isLanding = true;
         }
-
-        else if (col.gameObject.tag == "Fish"){
-            
-		}
     }
 
     // 離れた瞬間

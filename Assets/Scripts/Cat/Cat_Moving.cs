@@ -27,7 +27,6 @@ public class Cat_Moving : MonoBehaviour
         par = charaObj.GetComponent<CatParameter>();
 
         /* 初期化 */
-        
     }
 
 //-------------------------------------------------------------------

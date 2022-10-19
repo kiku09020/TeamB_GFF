@@ -25,7 +25,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5310392888772566419}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -89,29 +89,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimerText_Time
       objectReference: {fileID: 0}
-    - target: {fileID: 6655763617541341273, guid: c3f9d39505fb2bd4fa33c5ea0ffaad74, type: 3}
-      propertyPath: m_Text
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 6655763617541341273, guid: c3f9d39505fb2bd4fa33c5ea0ffaad74, type: 3}
-      propertyPath: m_FontData.m_MaxSize
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 6655763617541341273, guid: c3f9d39505fb2bd4fa33c5ea0ffaad74, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 6655763617541341273, guid: c3f9d39505fb2bd4fa33c5ea0ffaad74, type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 8611693167586684529, guid: c3f9d39505fb2bd4fa33c5ea0ffaad74, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8611693167586684529, guid: c3f9d39505fb2bd4fa33c5ea0ffaad74, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8611693167586684529, guid: c3f9d39505fb2bd4fa33c5ea0ffaad74, type: 3}
       propertyPath: m_RootOrder
@@ -123,7 +107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8611693167586684529, guid: c3f9d39505fb2bd4fa33c5ea0ffaad74, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8611693167586684529, guid: c3f9d39505fb2bd4fa33c5ea0ffaad74, type: 3}
       propertyPath: m_AnchorMin.x
@@ -131,7 +115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8611693167586684529, guid: c3f9d39505fb2bd4fa33c5ea0ffaad74, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8611693167586684529, guid: c3f9d39505fb2bd4fa33c5ea0ffaad74, type: 3}
       propertyPath: m_SizeDelta.x
@@ -175,7 +159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8611693167586684529, guid: c3f9d39505fb2bd4fa33c5ea0ffaad74, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1627.7778
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 8611693167586684529, guid: c3f9d39505fb2bd4fa33c5ea0ffaad74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -291,18 +275,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimerText
       objectReference: {fileID: 0}
-    - target: {fileID: 8485211581756940973, guid: c88f8417afffae04e9e19ab15356bff4, type: 3}
-      propertyPath: m_Text
-      value: TIME
-      objectReference: {fileID: 0}
-    - target: {fileID: 8485211581756940973, guid: c88f8417afffae04e9e19ab15356bff4, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 8485211581756940973, guid: c88f8417afffae04e9e19ab15356bff4, type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c88f8417afffae04e9e19ab15356bff4, type: 3}
 --- !u!224 &7557473390813352105 stripped
@@ -403,11 +375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7799422565077391302, guid: 6c4c23b0fb68b9c41b3cb6d542dfb42c, type: 3}
       propertyPath: m_Name
-      value: ScoreText
-      objectReference: {fileID: 0}
-    - target: {fileID: 8733298722540448406, guid: 6c4c23b0fb68b9c41b3cb6d542dfb42c, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 35
+      value: TotalScoreText
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c4c23b0fb68b9c41b3cb6d542dfb42c, type: 3}

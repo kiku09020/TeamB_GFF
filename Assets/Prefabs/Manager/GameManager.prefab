@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3c334117abe31479f146565dde6d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTime: 5
+  startTime: 60
   transitionTime: 3
 --- !u!1 &137223666008951008
 GameObject:
@@ -515,6 +515,7 @@ GameObject:
   m_Component:
   - component: {fileID: 137223666008951023}
   - component: {fileID: 3491281534168129975}
+  - component: {fileID: 8929296197964086273}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: GameController
@@ -548,6 +549,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb5d1e058e5c254596cc7eb26f86b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8929296197964086273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137223666008951008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532233a84c990d247a2213edfe93ac63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destTime: 0.5
+  scoreText: {fileID: 2217630267930062574, guid: ca1019e1d41269f4a94131096d0198c6, type: 3}
+  timeText: {fileID: 4003380088002144752, guid: f21c22e34e368ca459df5ef7864fa56b, type: 3}
 --- !u!1 &2223382955660871355
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +629,7 @@ MonoBehaviour:
   idlePosX: 6
   jumpPosX: 0
   outScrnDown: -25
-  outScrnUp: 25
+  outScrnUp: 22.5
   moveSpd: 0.187
   jumpForceMin: 600
   existMainCat: 0
@@ -633,7 +649,7 @@ MonoBehaviour:
   intervalMin: 0.5
   intervalDecVal: 0
   genXRange: 8
-  genPosY: 30
+  genPosY: 25
   genPrefs:
   - {fileID: 5595158151744463373, guid: e85a4b919276c63419570652e9b0d268, type: 3}
   - {fileID: 825683738461295673, guid: dc22d8806417c064dbf68c3b591f439b, type: 3}

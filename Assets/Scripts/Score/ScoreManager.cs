@@ -36,7 +36,7 @@ public class ScoreManager : MonoBehaviour
         canvas = uiObj.GetComponent<CanvasManager>();
 
         /* 初期化 */
-        GameObject scoreTextObj = canvas.GameCanvas.transform.Find("ScoreText").gameObject;
+        GameObject scoreTextObj = canvas.GameCanvas.transform.Find("TotalScoreText").gameObject;
         dispScoreText = scoreTextObj.GetComponent<Text>();
     }
 
