@@ -5,7 +5,7 @@ using UnityEngine;
 public class Cat_HitChecker : MonoBehaviour
 {
     /* 値 */
-
+    [SerializeField] float stopTime;
 
     /* フラグ */
 
@@ -15,9 +15,8 @@ public class Cat_HitChecker : MonoBehaviour
 
     /* コンポーネント取得用 */
     TextGenerater txtGen;
-    ScoreManager score;
-    TimeManager time;
 
+    ComboManager combo;
     Cat cat;
 
     //-------------------------------------------------------------------
@@ -29,10 +28,9 @@ public class Cat_HitChecker : MonoBehaviour
 
         /* コンポーネント取得 */
         txtGen = uiObj.GetComponent<TextGenerater>();
-        score = gmObj.GetComponent<ScoreManager>();
-        time = gmObj.GetComponent<TimeManager>();
 
         cat = transform.parent.GetComponent<Cat>();
+        combo = GetComponent<ComboManager>();
 
         /* 初期化 */
 
@@ -44,14 +42,27 @@ public class Cat_HitChecker : MonoBehaviour
         // ジャンプ中の猫にのみ適用
         if (col.gameObject.tag == "Fish" && cat.state == Cat.State.Jumped) {
             Fish fish = col.gameObject.GetComponent<Fish>();
+            float score = 0;    float time = 0;
 
-            // スコア、タイム加算
-            score.AddScore(fish.AddedScore);
-            time.AddTime(fish.AddedTime);
+            // フグ以外はコンボする
+            if (fish.Type == Fish.FishType.fugu) {
+                combo.Combo(0, fish.AddedTime);
+
+                score = fish.AddedScore;
+                time = combo.CombodTime;
+            }
+
+            // フグはコンボしない
+            else {
+                combo.Combo(fish.AddedScore, fish.AddedTime);        // コンボ
+
+                score = combo.CombodScore;
+                time = combo.CombodTime;
+            }
 
             // テキスト生成
-            txtGen.GenelateText(TextGenerater.TextType.score, fish.AddedScore, col.gameObject.transform.position);
-            txtGen.GenelateText(TextGenerater.TextType.time, fish.AddedTime, col.gameObject.transform.position);
+            txtGen.GenScoreText(TextGenerater.ScoreTextType.score, score, col.gameObject.transform.position);
+            txtGen.GenScoreText(TextGenerater.ScoreTextType.time, time, col.gameObject.transform.position);
 
             fish.Eaten();
             Destroy(col.gameObject,0.1f);

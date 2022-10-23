@@ -491,6 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51243b8d835333444902181cb1112b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targScoreVal: 1000
 --- !u!114 &7176077220294501127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,10 +647,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intervalStart: 1.5
-  intervalMin: 0.5
-  intervalDecVal: 0
+  genIntvlMin: 0.5
+  intvlDecVal: 0.15
   genXRange: 8
-  genPosY: 25
+  genPosY: 30
   genPrefs:
   - {fileID: 5595158151744463373, guid: e85a4b919276c63419570652e9b0d268, type: 3}
   - {fileID: 825683738461295673, guid: dc22d8806417c064dbf68c3b591f439b, type: 3}
@@ -669,7 +670,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpdStart: 0.1
-  delY: -25
+  fallSpdIncVal: 0.005
+  fallSpdMax: 0.3
+  delY: -10
 --- !u!1001 &5664595408795085145
 PrefabInstance:
   m_ObjectHideFlags: 0

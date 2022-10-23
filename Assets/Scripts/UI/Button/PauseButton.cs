@@ -10,7 +10,7 @@ public class PauseButton : ButtonManager
     /* コンポーネント取得用 */
     GameManager gm;
     CanvasManager canvas;
-    AudioManager aud;
+    AudioManager _aud;
 
 //-------------------------------------------------------------------
     void Start()
@@ -23,7 +23,7 @@ public class PauseButton : ButtonManager
         /* コンポーネント取得 */
         gm = gmObj.GetComponent<GameManager>();
         canvas = umObj.GetComponent<CanvasManager>();
-        aud = audObj.GetComponent<AudioManager>();
+        _aud = audObj.GetComponent<AudioManager>();
 
         /* 初期化 */
         
@@ -34,7 +34,7 @@ public class PauseButton : ButtonManager
     {
         gm.isPause = pause;     // 停止中フラグ
         canvas.Pause(pause);    // キャンバスのフラグ
-        aud.PauseAudio(pause);  // 音声一時停止
+        _aud.PauseAudio(pause);  // 音声一時停止
 
         // ポーズ時
         if (pause) {

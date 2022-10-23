@@ -113,5 +113,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 100
-  time: 0.5
+  time: 0.25
   type: 0

@@ -7,9 +7,9 @@ public class FishGenerater : MonoBehaviour
     /* 値 */
     [Header("生成インターバル")]
     [SerializeField, Tooltip("開始時の生成インターバル")]   float intervalStart;
-    [SerializeField, Tooltip("最小の生成インターバル")]     float intervalMin;
-    [SerializeField, Tooltip("生成インターバルを減らす量")] float intervalDecVal;
-    float nowGenInterval;      // 現在の生成インターバル
+    [SerializeField, Tooltip("最小の生成インターバル")]     float genIntvlMin;
+    [SerializeField, Tooltip("生成インターバルを減らす量")] float intvlDecVal;
+    float nowGenIntvl;      // 現在の生成インターバル
     float timer;
 
     [Header("生成位置")]
@@ -32,20 +32,23 @@ public class FishGenerater : MonoBehaviour
 
     /* コンポーネント取得用 */
     GameManager gm;
+    FishParameter par;
 
 //-------------------------------------------------------------------
     void Start()
     {
         /* オブジェクト取得 */
-        GameObject gmObj = GameObject.Find("GameManager");
+        GameObject gmObj = transform.parent.gameObject;
+        GameObject charaObj = gmObj.transform.Find("CharaManager").gameObject;
+
         parent = GameObject.Find("Fish").transform;
 
         /* コンポーネント取得 */
         gm = gmObj.GetComponent<GameManager>();
-
+        par = charaObj.GetComponent<FishParameter>();
 
         /* 初期化 */
-        nowGenInterval = intervalStart;
+        nowGenIntvl = intervalStart;
 
         SetGenProb();
     }
@@ -55,14 +58,19 @@ public class FishGenerater : MonoBehaviour
     {
         Generate();
 
-        TimeUpDel();
+        // タイムアップ時の処理
+        if (gm.timeUp) {
+            foreach (Transform child in parent) {
+                Destroy(child.gameObject);
+            }
+        }
     }
 
 //-------------------------------------------------------------------
     // 魚の生成
     void Generate()
     {
-        if (timer >= nowGenInterval && !gm.timeUp) {
+        if (timer >= nowGenIntvl && !gm.timeUp) {
             // 生成位置
             genPosX = Random.Range(-genXRange, genXRange);
             genPos = new Vector2(genPosX, genPosY);
@@ -78,42 +86,38 @@ public class FishGenerater : MonoBehaviour
     }
 
     // 生成確率の指定
-    Fish.Type SetGenProb()
+    Fish.FishType SetGenProb()
     {
-        Fish.Type genFishType;        // 生成する魚のタイプ
+        Fish.FishType genFishType;        // 生成する魚のタイプ
 
         float random = Random.value;            // 確率
 
         // レア魚
         if (random <= genProb_Rare) {
-            genFishType = Fish.Type.rare;
+            genFishType = Fish.FishType.rare;
         }
 
         // フグ
         else if (random + genProb_Rare <= genProb_Fugu) {
-            genFishType = Fish.Type.fugu;
+            genFishType = Fish.FishType.fugu;
         }
 
         else {
-            genFishType = Fish.Type.normal;
+            genFishType = Fish.FishType.normal;
         }
 
         return genFishType;
     }
 
-    // タイムアップ時に削除する
-    void TimeUpDel()
+    // 落下速度と生成インターバルの変更
+    public void ChangeSpd()
     {
-        if(gm.timeUp){
-            foreach(Transform child in parent){
-                Destroy(child.gameObject);
-			}
-		}
-	}
+        if (nowGenIntvl > genIntvlMin) {
+            nowGenIntvl -= intvlDecVal;
 
-    // 落下速度の変更
-    void ChangeFallSpd()
-    {
-        
+            par.ChangeFallSpd();
+
+            print(nowGenIntvl);
+        }
 	}
 }

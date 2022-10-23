@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 2905422577312214515}
   - component: {fileID: 6188768189254867788}
   - component: {fileID: 7778298960458316356}
+  - component: {fileID: 8844155537874005443}
   m_Layer: 0
   m_Name: HitChecker
   m_TagString: Untagged
@@ -200,6 +201,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 401a4dc1b102b5f44b21fb1ea6bef4c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopTime: 0.05
+--- !u!114 &8844155537874005443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7273580707325951862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec58e29ff2e95148aee84fcd8ca423f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7899309465708641873

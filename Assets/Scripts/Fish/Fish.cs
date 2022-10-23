@@ -8,12 +8,10 @@ public abstract class Fish : MonoBehaviour
     /* 値 */
     [SerializeField] protected int      score;      // スコア
     [SerializeField] protected float    time;       // 増加、減少するタイム
-    [SerializeField] protected Type     type;       // タイプ
-
-    float nowFallSpd;       // 現在の落下速度
+    [SerializeField] protected FishType     type;       // タイプ
 
     // 魚の種類
-    public enum Type {
+    public enum FishType {
         normal,     // 通常
         fugu,       // ふぐ
         rare,       // レア
@@ -22,6 +20,7 @@ public abstract class Fish : MonoBehaviour
     /* プロパティ */
     public int AddedScore { get => score; }
     public float AddedTime { get => time; }
+    public FishType Type { get => type; }
 
     /* コンポーネント取得用 */
     AudioManager aud;
@@ -55,13 +54,12 @@ public abstract class Fish : MonoBehaviour
         par     = charaObj.GetComponent<FishParameter>();
 
         /* 初期化 */
-        nowFallSpd = par.FallSpdStart;      // 落下速度
     }
 
     // 落下処理
     protected void Fall()
     {
-        transform.Translate(new Vector2(0, -nowFallSpd));
+        transform.Translate(new Vector2(0, -par.FallSpd));
     }
 
     // 画面外判定

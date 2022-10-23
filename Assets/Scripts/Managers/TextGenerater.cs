@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class TextGenerater : MonoBehaviour
 {
     /* 値 */
-    [SerializeField] float destTime;            // テキスト削除までの時間
+    [Header("テキスト削除までの時間")]
+    [SerializeField] float destTime_score;      // スコアテキスト
+    [SerializeField] float destTime_spdUp;      // 速度アップテキスト
 
-    public enum TextType {
+    // スコアテキストの種類
+    public enum ScoreTextType {
         score,
         time,
     }
@@ -21,6 +24,11 @@ public class TextGenerater : MonoBehaviour
     [SerializeField] GameObject scoreText;      // 追加されるスコアのテキスト
     [SerializeField] GameObject timeText;       // 追加されるタイムのテキスト
 
+    [SerializeField] GameObject spdUpText;      // 速度アップテキスト
+
+    Transform prnt_game;                        // GameUICanvas
+    Transform prnt_ctrl;                        // ControllerCanvas
+    
     /* プロパティ */
 
 
@@ -38,29 +46,48 @@ public class TextGenerater : MonoBehaviour
         canvas = GetComponent<CanvasManager>();
 
         /* 初期化 */
-        
+        prnt_game = canvas.GameCanvas.transform;
+        prnt_ctrl = canvas.CtrlCanvas.transform;
     }
 
 //-------------------------------------------------------------------
     // スコアテキストの生成
-    public void GenelateText(TextType type,float value,Vector2 pos)
+    public void GenScoreText(ScoreTextType type,float value,Vector2 pos)
     {
         GameObject text = null;
         Vector2 scrnPos = Camera.main.WorldToScreenPoint(pos);      // ワールドからスクリーンに変換
-        Transform parent = canvas.GameCanvas.transform; ;           // 親キャンバス
+
+        // 符号判定
+        string signStr = null;
+        if (Mathf.Sign(value) == 1) {
+            signStr = "+";
+        }
+        else {
+            signStr = "-";
+        }
 
         // 生成するテキスト指定
+        string textStr = signStr + Mathf.Abs(value).ToString();
+
         switch (type) {
-            case TextType.score:
-                scoreText.GetComponent<Text>().text = "+" + value.ToString();
+            case ScoreTextType.score:
+                scoreText.GetComponent<Text>().text = textStr;
                 text = scoreText;   break;
 
-            case TextType.time:
-                timeText.GetComponent<Text>().text = "+" + value.ToString()+"s\n";
+            case ScoreTextType.time:
+                timeText.GetComponent<Text>().text = textStr + "s\n";
                 text = timeText;    break;
         }
 
-        GameObject inst = Instantiate(text, scrnPos, Quaternion.identity, parent);      // 生成
-        Destroy(inst, destTime);                                                        // 削除
+        GameObject inst = Instantiate(text, scrnPos, Quaternion.identity, prnt_game);      // 生成
+        Destroy(inst, destTime_score);                                                        // 削除
     }
+
+    // 速度アップテキストの生成
+    public void GenSpdupText()
+	{
+
+        GameObject inst = Instantiate(spdUpText, Vector2.zero, Quaternion.identity, prnt_game);
+        Destroy(inst, destTime_spdUp);
+	}
 }
