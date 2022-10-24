@@ -59,7 +59,7 @@ public class FishGenerater : MonoBehaviour
         Generate();
 
         // タイムアップ時の処理
-        if (gm.timeUp) {
+        if (gm.isTimeUp) {
             foreach (Transform child in parent) {
                 Destroy(child.gameObject);
             }
@@ -70,7 +70,7 @@ public class FishGenerater : MonoBehaviour
     // 魚の生成
     void Generate()
     {
-        if (timer >= nowGenIntvl && !gm.timeUp) {
+        if (timer >= nowGenIntvl && !gm.isTimeUp) {
             // 生成位置
             genPosX = Random.Range(-genXRange, genXRange);
             genPos = new Vector2(genPosX, genPosY);

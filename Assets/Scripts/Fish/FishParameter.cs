@@ -34,12 +34,6 @@ public class FishParameter : MonoBehaviour
     }
 
 //-------------------------------------------------------------------
-    void FixedUpdate()
-    {
-        
-    }
-
-//-------------------------------------------------------------------
     public void ChangeFallSpd()
 	{
         if (fallSpdNow < fallSpdMax) {

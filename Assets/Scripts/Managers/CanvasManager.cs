@@ -8,10 +8,12 @@ public class CanvasManager : MonoBehaviour
     GameObject ctrlCnvs;
     GameObject uiCnvs;
     GameObject pauseCnvs;
+    GameObject resultCnvs;
 
     /* プロパティ */
-    public GameObject CtrlCanvas { get => ctrlCnvs; }
-    public GameObject GameCanvas { get => uiCnvs; }
+    public GameObject CtrlCanvas    { get => ctrlCnvs; }
+    public GameObject GameCanvas    { get => uiCnvs; }
+    public GameObject ResultCanvas  { get => resultCnvs; }
 
     //-------------------------------------------------------------------
     void Awake()
@@ -23,9 +25,11 @@ public class CanvasManager : MonoBehaviour
         ctrlCnvs  = parent.Find("ControllerCanvas").gameObject;
         uiCnvs    = parent.Find("GameUICanvas").gameObject;
         pauseCnvs = parent.Find("PauseCanvas").gameObject;
+        resultCnvs = parent.Find("ResultCanvas").gameObject;
 
         /* 初期化 */
         pauseCnvs.SetActive(false);
+        resultCnvs.SetActive(false);
     }
 
     //-------------------------------------------------------------------
@@ -45,4 +49,17 @@ public class CanvasManager : MonoBehaviour
             pauseCnvs.SetActive(false);
         }
     }
+
+    // タイムアップになった瞬間
+    public void TimeUp()
+    {
+        ctrlCnvs.SetActive(false);
+	}
+
+    // リザルト画面に遷移するとき
+    public void TransitionResult()
+    {
+        uiCnvs.SetActive(false);
+        resultCnvs.SetActive(true);
+	}
 }

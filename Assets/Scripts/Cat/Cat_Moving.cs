@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 /* 猫の移動 */
 public class Cat_Moving : MonoBehaviour
 {
     /* 値 */
-
+    bool moveOnce_Idle;
+    bool moveOnce_jump;
 
     /* コンポーネント取得用 */
     Cat cat;
@@ -34,7 +36,11 @@ public class Cat_Moving : MonoBehaviour
     {
         // 範囲外の猫
         if (cat.state == Cat.State.OutScrn && !par.existMainCat) {
-            transform.position = Vector2.MoveTowards(cat.Pos, par.IdlePos,par.MoveSpd);     // 移動(仮)
+            if (!moveOnce_Idle) {
+                transform.DOMove(par.IdlePos, par.MoveTime).SetEase(Ease.InOutSine);     // 移動(仮)
+                transform.DORotate(new Vector3(0, 0, 360), par.MoveTime,RotateMode.FastBeyond360);
+                moveOnce_Idle = true;
+            }
 
             // 目的地についたとき
             if (cat.Pos.x == par.IdlePos.x) {
@@ -45,7 +51,11 @@ public class Cat_Moving : MonoBehaviour
 
         // 待ち猫
         else if (cat.state == Cat.State.Wait && !par.existMainCat) {
-            transform.position = Vector2.MoveTowards(cat.Pos, par.JumpPos, par.MoveSpd);
+            if (!moveOnce_jump) {
+                transform.DOMove(par.JumpPos, par.MoveTime).SetEase(Ease.InOutSine);
+                transform.DORotate(new Vector3(0, 0, 360), par.MoveTime, RotateMode.FastBeyond360);
+                moveOnce_jump = true;
+            }
 
             // ついたとき
             if (cat.Pos.x == par.JumpPos.x) {

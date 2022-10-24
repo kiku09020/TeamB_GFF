@@ -73,7 +73,7 @@ public class Cat : MonoBehaviour
 //-------------------------------------------------------------------
     void LateUpdate()
     {
-        if (!gm.timeUp) {
+        if (!gm.isTimeUp) {
             pos = transform.position;
             StateProc();
         }

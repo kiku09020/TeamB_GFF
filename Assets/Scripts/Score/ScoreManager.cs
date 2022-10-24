@@ -103,7 +103,7 @@ public class ScoreManager : MonoBehaviour
 
         // タイム減らす速度上昇
         if (spdUpCnt >= spdUpCnt_Thrshld && !timeDecOnce){
-            time.ChangeTimeDecCoef(2);
+            time.ChangeTimeDecCoef(1.5f);
             timeDecOnce = true;
 		}
 	}

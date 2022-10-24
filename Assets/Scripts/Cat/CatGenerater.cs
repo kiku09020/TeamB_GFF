@@ -36,7 +36,7 @@ public class CatGenerater : MonoBehaviour
 //-------------------------------------------------------------------
     public void Generate()
     {
-        if (!gm.timeUp) {
+        if (!gm.isTimeUp) {
             Instantiate(catPref, par.GenPos, Quaternion.identity, parent);
         }
     }

@@ -57,7 +57,7 @@ public class TimeManager : MonoBehaviour
         DispTimer();
 
         // 結果遷移
-        if(gm.timeUp){
+        if(gm.isTimeUp){
             TransitionToResult();
 		}
     }
@@ -73,7 +73,7 @@ public class TimeManager : MonoBehaviour
 
         // タイマー終了
         else {
-            gm.timeUp = true;
+            gm.isTimeUp = true;
 		}
 	}
 
@@ -116,7 +116,8 @@ public class TimeManager : MonoBehaviour
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(transitionTime);
-
+        gm.isResult = true;
+        gm.isTimeUp = false;
         aud.PauseAudio(true);
     }
 

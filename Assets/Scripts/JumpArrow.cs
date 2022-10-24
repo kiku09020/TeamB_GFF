@@ -50,7 +50,7 @@ public class JumpArrow : MonoBehaviour
 //-------------------------------------------------------------------
     void Update()
     {
-        if (!gm.timeUp) {
+        if (!gm.isTimeUp) {
             TapDown();
 
             if (cat.state == Cat.State.Ready) {
