@@ -46,10 +46,11 @@ public class Cat_HitChecker : MonoBehaviour
 
             // フグ以外はコンボする
             if (fish.Type == Fish.FishType.fugu) {
-                combo.Combo(0, fish.AddedTime);
-
+                combo.Combo(0, fish.AddedTime);         // 時間はコンボ数分減らす
                 score = fish.AddedScore;
                 time = combo.CombodTime;
+
+                combo.ResetCombo();                     // コンボリセット
             }
 
             // フグはコンボしない

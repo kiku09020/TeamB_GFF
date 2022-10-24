@@ -115,9 +115,9 @@ public class FishGenerater : MonoBehaviour
         if (nowGenIntvl > genIntvlMin) {
             nowGenIntvl -= intvlDecVal;
 
-            par.ChangeFallSpd();
-
-            print(nowGenIntvl);
+            print("InterVal = "+ nowGenIntvl);
         }
+
+        par.ChangeFallSpd();
 	}
 }

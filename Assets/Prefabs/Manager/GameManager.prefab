@@ -491,6 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51243b8d835333444902181cb1112b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  incThrshld: 5000
   targScoreVal: 1000
 --- !u!114 &7176077220294501127
 MonoBehaviour:
@@ -562,9 +563,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532233a84c990d247a2213edfe93ac63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destTime: 0.5
+  destTime_score: 0.5
+  destTime_spdUp: 2
   scoreText: {fileID: 2217630267930062574, guid: ca1019e1d41269f4a94131096d0198c6, type: 3}
   timeText: {fileID: 4003380088002144752, guid: f21c22e34e368ca459df5ef7864fa56b, type: 3}
+  spdUpText: {fileID: 8916868223773248878, guid: 429747e3847e3c94388a8699a08d7d0c, type: 3}
 --- !u!1 &2223382955660871355
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intervalStart: 1.5
-  genIntvlMin: 0.5
+  genIntvlMin: 0.4
   intvlDecVal: 0.15
   genXRange: 8
   genPosY: 30
@@ -670,7 +673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpdStart: 0.1
-  fallSpdIncVal: 0.005
+  fallSpdIncVal: 0.01
   fallSpdMax: 0.3
   delY: -10
 --- !u!1001 &5664595408795085145

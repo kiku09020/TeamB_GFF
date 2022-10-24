@@ -11,6 +11,8 @@ public class DebugManager : MonoBehaviour
     SceneController scene;
     ParticleManager part;
 
+    ScoreManager score;
+
 //-------------------------------------------------------------------
     void Start()
     {
@@ -21,6 +23,8 @@ public class DebugManager : MonoBehaviour
         /* コンポーネント取得 */
         scene = gmObj.GetComponent<SceneController>();
         part = partObj.GetComponent<ParticleManager>();
+
+        score = gmObj.GetComponent<ScoreManager>();
 
         /* 初期化 */
         
@@ -44,6 +48,10 @@ public class DebugManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P)) {
             part.PlayPart(ParticleManager.PartNames.circle, Vector2.zero);
+        }
+
+        if (Input.GetKeyDown(KeyCode.S)) {
+            score.AddScore(1000);
         }
     }
 

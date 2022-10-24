@@ -62,4 +62,12 @@ public class ComboManager : MonoBehaviour
         ComboScore(score);      // スコアのコンボ
         ComboTime(time);        // タイムのコンボ
     }
+
+    // コンボリセット
+    public void ResetCombo()
+    {
+        comboCnt = 0;
+        combodScore = 0;
+        combodTime = 0;
+    }
 }

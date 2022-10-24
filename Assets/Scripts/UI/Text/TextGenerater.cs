@@ -86,8 +86,9 @@ public class TextGenerater : MonoBehaviour
     // 速度アップテキストの生成
     public void GenSpdupText()
 	{
+        Vector2 pos = Camera.main.WorldToScreenPoint(Vector2.zero);
 
-        GameObject inst = Instantiate(spdUpText, Vector2.zero, Quaternion.identity, prnt_game);
+        GameObject inst = Instantiate(spdUpText, pos, Quaternion.identity, prnt_game);
         Destroy(inst, destTime_spdUp);
 	}
 }

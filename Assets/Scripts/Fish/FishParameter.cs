@@ -44,6 +44,8 @@ public class FishParameter : MonoBehaviour
 	{
         if (fallSpdNow < fallSpdMax) {
             fallSpdNow += fallSpdIncVal;
+
+            print("FallSpd = " + fallSpdNow);
         }
 	}
 }
