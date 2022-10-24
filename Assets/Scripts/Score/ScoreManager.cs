@@ -13,6 +13,7 @@ public class ScoreManager : MonoBehaviour
     int targScorePrev;                      // 一つ前の目標スコア
     int targScoreDiff;                      // 前の目標スコアと現在の目標スコアの差
     int spdUpCnt;                           // 速度アップした回数
+    [SerializeField] int spdUpCnt_Thrshld;  // タイム減らす速度を上昇の閾値
     [SerializeField] int incThrshld;        // 等速的・加速度的増加の閾値
     [SerializeField] int targScoreVal;      // 目標スコア～次の目標スコアの間の値
 
@@ -21,6 +22,8 @@ public class ScoreManager : MonoBehaviour
     int dispScoreVal;                       // 表示用スコアを増減させる値
 
     /* フラグ */
+    bool timeDecOnce;       // タイム一度のみ
+
 
     /* プロパティ */
     public int NowScore { get => nowScore; }
@@ -33,6 +36,7 @@ public class ScoreManager : MonoBehaviour
 
     /* コンポーネント取得用 */
     CanvasManager canvas;
+    TimeManager time;
     TextGenerater txtGen;
     UIAnimation anim;
 
@@ -51,6 +55,7 @@ public class ScoreManager : MonoBehaviour
         txtGen = uiObj.GetComponent<TextGenerater>();
         anim = uiObj.GetComponent<UIAnimation>();
         fishGen = charaObj.GetComponent<FishGenerater>();
+        time = GetComponent<TimeManager>();
 
         /* 初期化 */
         GameObject scoreObj = canvas.GameCanvas.transform.Find("Back").gameObject;
@@ -95,6 +100,12 @@ public class ScoreManager : MonoBehaviour
         CheckTargetScore();             // 目標スコア達成したかどうか
 
         anim.TotalScore(scoreTextObj);
+
+        // タイム減らす速度上昇
+        if (spdUpCnt >= spdUpCnt_Thrshld && !timeDecOnce){
+            time.ChangeTimeDecCoef(2);
+            timeDecOnce = true;
+		}
 	}
 
     // 目標スコアに到達したかどうかを確認する

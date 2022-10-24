@@ -8,6 +8,7 @@ public class TimeManager : MonoBehaviour
     /* 値 */
     [SerializeField] float startTime;           // 開始時の時間
     float timer;                                // タイマー
+    float timeDecCoef;                            // 時間減らす用の係数
 
     [SerializeField] float transitionTime;      // リザルト画面までの遷移時間
 
@@ -42,6 +43,7 @@ public class TimeManager : MonoBehaviour
         /* 初期化 */
         // 開始時の時間に設定
         timer = startTime;
+        timeDecCoef = 1;
     }
 
     void FixedUpdate()
@@ -62,7 +64,7 @@ public class TimeManager : MonoBehaviour
     {
         // カウントダウン
         if (timer > 1){
-            timer -= Time.deltaTime;
+            timer -= Time.deltaTime * timeDecCoef;
         }
 
         // タイマー終了
@@ -108,4 +110,8 @@ public class TimeManager : MonoBehaviour
     {
         timer += time;
 	}
+
+    // 時間減らす係数の変更
+    public void ChangeTimeDecCoef(float val)
+    { timeDecCoef = val; }
 }

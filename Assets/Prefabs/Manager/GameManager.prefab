@@ -491,6 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51243b8d835333444902181cb1112b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spdUpCnt_Thrshld: 10
   incThrshld: 5000
   targScoreVal: 1000
 --- !u!114 &7176077220294501127
