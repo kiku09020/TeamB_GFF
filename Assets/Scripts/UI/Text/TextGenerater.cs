@@ -34,6 +34,7 @@ public class TextGenerater : MonoBehaviour
 
     /* コンポーネント取得用 */
     CanvasManager canvas;
+    UIAnimation anim;
 
 
 //-------------------------------------------------------------------
@@ -44,6 +45,7 @@ public class TextGenerater : MonoBehaviour
 
         /* コンポーネント取得 */
         canvas = GetComponent<CanvasManager>();
+        anim = GetComponent<UIAnimation>();
 
         /* 初期化 */
         prnt_game = canvas.GameCanvas.transform;
@@ -76,19 +78,22 @@ public class TextGenerater : MonoBehaviour
 
             case ScoreTextType.time:
                 timeText.GetComponent<Text>().text = textStr + "s\n";
+                scrnPos += new Vector2(0, 50);
                 text = timeText;    break;
         }
 
         GameObject inst = Instantiate(text, scrnPos, Quaternion.identity, prnt_game);      // 生成
+        anim.ScoreUp(inst,scrnPos);
         Destroy(inst, destTime_score);                                                        // 削除
     }
 
     // 速度アップテキストの生成
     public void GenSpdupText()
 	{
-        Vector2 pos = Camera.main.WorldToScreenPoint(Vector2.zero);
+        Vector2 pos = Camera.main.WorldToScreenPoint(new Vector2(15, 0));
 
         GameObject inst = Instantiate(spdUpText, pos, Quaternion.identity, prnt_game);
+        anim.SpeedUp(inst);
         Destroy(inst, destTime_spdUp);
 	}
 }
