@@ -565,8 +565,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532233a84c990d247a2213edfe93ac63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destTime_score: 0.5
-  destTime_spdUp: 2
+  destTime_score: 1
+  destTime_spdUp: 3
   scoreText: {fileID: 2217630267930062574, guid: ca1019e1d41269f4a94131096d0198c6, type: 3}
   timeText: {fileID: 4003380088002144752, guid: f21c22e34e368ca459df5ef7864fa56b, type: 3}
   spdUpText: {fileID: 8916868223773248878, guid: 429747e3847e3c94388a8699a08d7d0c, type: 3}
