@@ -53,4 +53,14 @@ public class UIAnimation : MonoBehaviour
         sequence.Append(obj.transform.DOMoveY(posY, 0.5f).SetEase(Ease.InCubic));
         sequence.Append(obj.transform.DOScale(0, 0.5f));
     }
+
+    public void TimerIn(GameObject obj)
+    {
+        obj.transform.DOScale(1.5f, 0.5f);
+    }
+
+    public void TimerOut(GameObject obj)
+    {
+        obj.transform.DOScale(1, 0.5f);
+    }
 }

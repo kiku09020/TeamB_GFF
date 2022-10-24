@@ -14,13 +14,16 @@ public class TimeManager : MonoBehaviour
 
     /* フラグ */
     bool onceFlg;
+    bool timeOnceFlg;
 
     /* プロパティ */
 
 
     /* コンポーネント取得用 */
+    GameObject timerTextObj;
     Text timerText;
     CanvasManager canvas;
+    UIAnimation anim;
 
     GameManager gm;
     AudioManager aud;
@@ -35,10 +38,11 @@ public class TimeManager : MonoBehaviour
         /* コンポーネント取得 */
         gm = GetComponent<GameManager>();
         aud = audObj.GetComponent<AudioManager>();
+        anim = uiObj.GetComponent<UIAnimation>();
 
         canvas = uiObj.GetComponent<CanvasManager>();
-        GameObject canvasObj= canvas.GameCanvas.transform.Find("TimerText_Time").gameObject;
-        timerText = canvasObj.GetComponent<Text>();
+        timerTextObj= canvas.GameCanvas.transform.Find("TimerText_Time").gameObject;
+        timerText = timerTextObj.GetComponent<Text>();
 
         /* 初期化 */
         // 開始時の時間に設定
@@ -80,6 +84,18 @@ public class TimeManager : MonoBehaviour
         if (timer > 1) {
             int timerInt = (int)timer;
             timerText.text = timerInt.ToString();
+
+            if (timer <= 11 && !timeOnceFlg)
+            {
+                timeOnceFlg = true;
+                anim.TimerIn(timerTextObj);
+            }
+
+            else
+            {
+                timeOnceFlg = false;
+                anim.TimerOut(timerTextObj);
+            }
         }
 
         // 終了
