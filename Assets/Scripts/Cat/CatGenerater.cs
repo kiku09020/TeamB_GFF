@@ -10,8 +10,11 @@ public class CatGenerater : MonoBehaviour
     [SerializeField] int catCnt;            // 出現させる猫の数
     [SerializeField] GameObject catPref;    // プレハブ
 
+    Transform parent;
+
     /* コンポーネント取得用 */
     CatParameter par;
+    GameManager gm;
 
     //-------------------------------------------------------------------
     void Start()
@@ -20,7 +23,10 @@ public class CatGenerater : MonoBehaviour
         GameObject gmObj = GameObject.Find("GameManager");
         GameObject charaObj = gmObj.transform.Find("CharaManager").gameObject;
 
+        parent = GameObject.Find("Cats").transform;
+
         /* コンポーネント取得 */
+        gm = gmObj.GetComponent<GameManager>();
         par = charaObj.GetComponent<CatParameter>();
 
         /* 初期化 */
@@ -30,6 +36,8 @@ public class CatGenerater : MonoBehaviour
 //-------------------------------------------------------------------
     public void Generate()
     {
-        Instantiate(catPref, par.GenPos, Quaternion.identity);
+        if (!gm.timeUp) {
+            Instantiate(catPref, par.GenPos, Quaternion.identity, parent);
+        }
     }
 }

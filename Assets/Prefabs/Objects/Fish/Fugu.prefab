@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 825683738461295677}
   - component: {fileID: 825683738461295674}
   - component: {fileID: 825683738461295675}
-  - component: {fileID: 825683738461295672}
+  - component: {fileID: 8511252918256072268}
   m_Layer: 0
   m_Name: Fugu
-  m_TagString: Fugu
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
---- !u!114 &825683738461295672
+--- !u!114 &8511252918256072268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,5 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2694b549603e72f4b8575a9d1d0ba8e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: -100
+  score: 0
+  time: -1
   type: 1

@@ -22,6 +22,7 @@ public class JumpArrow : MonoBehaviour
     /* コンポーネント取得用 */
     LineRenderer line;
 
+    GameManager gm;
     CatParameter par;
     Cat cat;
     
@@ -38,6 +39,8 @@ public class JumpArrow : MonoBehaviour
         /* コンポーネント取得 */
         line = GetComponent<LineRenderer>();
 
+        gm = gmObj.GetComponent<GameManager>();
+
         par = charaObj.GetComponent<CatParameter>();
         cat = catObj.GetComponent<Cat>();
         /* 初期化 */
@@ -47,12 +50,19 @@ public class JumpArrow : MonoBehaviour
 //-------------------------------------------------------------------
     void Update()
     {
-        TapDown();
+        if (!gm.timeUp) {
+            TapDown();
 
-        if (cat.state == Cat.State.Ready) {
-            Tapping();
-            TapUp();
+            if (cat.state == Cat.State.Ready) {
+                Tapping();
+                TapUp();
+            }
         }
+
+        else{
+            line.enabled = false;
+            tapVector = Vector2.zero;
+		}
     }
 
 //-------------------------------------------------------------------

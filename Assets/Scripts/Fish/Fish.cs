@@ -8,22 +8,25 @@ public abstract class Fish : MonoBehaviour
     /* 値 */
     [SerializeField] protected int      score;      // スコア
     [SerializeField] protected float    time;       // 増加、減少するタイム
-    [SerializeField] protected Type     type;       // タイプ
-
-    float nowFallSpd;       // 現在の落下速度
+    [SerializeField] protected FishType     type;       // タイプ
 
     // 魚の種類
-    public enum Type {
+    public enum FishType {
         normal,     // 通常
         fugu,       // ふぐ
         rare,       // レア
     }
 
+    /* プロパティ */
+    public int AddedScore { get => score; }
+    public float AddedTime { get => time; }
+    public FishType Type { get => type; }
+
     /* コンポーネント取得用 */
     AudioManager aud;
+    ParticleManager part;
 
     FishParameter par;
-    ScoreManager scoreM;
 
     //-------------------------------------------------------------------
     protected virtual void Start()
@@ -45,19 +48,18 @@ public abstract class Fish : MonoBehaviour
         GameObject charaObj = gmObj.transform.Find("CharaManager").gameObject;
 
         /* コンポーネント取得 */
-        aud = audObj.GetComponent<AudioManager>();
+        aud     = audObj.GetComponent<AudioManager>();
 
-        par = charaObj.GetComponent<FishParameter>();
-        scoreM = gmObj.GetComponent<ScoreManager>();
+
+        par     = charaObj.GetComponent<FishParameter>();
 
         /* 初期化 */
-        nowFallSpd = par.FallSpdStart;      // 落下速度
     }
 
     // 落下処理
     protected void Fall()
     {
-        transform.Translate(new Vector2(0, -nowFallSpd));
+        transform.Translate(new Vector2(0, -par.FallSpd));
     }
 
     // 画面外判定
@@ -69,29 +71,22 @@ public abstract class Fish : MonoBehaviour
 	}
 
     // 効果音の指定
-    protected void PlayEatenSound(AudioEnum.SE_Fish se)
+    void PlayEatenSound()
     {
-        aud.PlaySE(AudioEnum.AudSrc.SE_Fish, (int)se);
+        aud.PlaySE(AudioEnum.AudSrc.SE_Fish, (int)type);
+    }
+
+    // パーティクルの指定
+    void PlayEatenParticle()
+    {
+
     }
 
     //-------------------------------------------------------------------
-    // 猫に食われたときの処理
-    protected virtual void Eaten()
+    // 捕食
+    public void Eaten()
     {
-        scoreM.AddScore(score);
-
-        PlayEatenSound(AudioEnum.SE_Fish.eaten);
-        Destroy(gameObject);
-    }
-
-    // 衝突時
-    void OnTriggerEnter2D(Collider2D col)
-	{
-        Cat.State catState = col.gameObject.GetComponent<Cat>().state;
-
-        // ジャンプしてるネコに当たったときのみ
-        if (col.gameObject.tag == "Cat" && catState == Cat.State.Jumped) {
-            Eaten();
-        }
+        PlayEatenSound();
+        PlayEatenParticle();
     }
 }

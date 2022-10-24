@@ -8,7 +8,6 @@ public class CanvasManager : MonoBehaviour
     GameObject ctrlCnvs;
     GameObject uiCnvs;
     GameObject pauseCnvs;
-    GameObject gmovCnvs;
 
     /* プロパティ */
     public GameObject CtrlCanvas { get => ctrlCnvs; }
@@ -24,11 +23,9 @@ public class CanvasManager : MonoBehaviour
         ctrlCnvs  = parent.Find("ControllerCanvas").gameObject;
         uiCnvs    = parent.Find("GameUICanvas").gameObject;
         pauseCnvs = parent.Find("PauseCanvas").gameObject;
-        gmovCnvs  = parent.Find("GameOverCanvas").gameObject;
 
         /* 初期化 */
         pauseCnvs.SetActive(false);
-        gmovCnvs.SetActive(false);
     }
 
     //-------------------------------------------------------------------
@@ -47,12 +44,5 @@ public class CanvasManager : MonoBehaviour
             uiCnvs.SetActive(true);
             pauseCnvs.SetActive(false);
         }
-    }
-
-    public void GameOver()
-    {
-        ctrlCnvs.SetActive(false);
-        uiCnvs.SetActive(false);
-        gmovCnvs.SetActive(true);
     }
 }

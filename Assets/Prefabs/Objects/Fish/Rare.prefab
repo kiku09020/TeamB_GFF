@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5595158151744463369}
   - component: {fileID: 5595158151744463368}
   - component: {fileID: 5595158151744463375}
-  - component: {fileID: 1580329542207719014}
+  - component: {fileID: 7625162213216833644}
   m_Layer: 9
   m_Name: Rare
   m_TagString: Fish
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1189906611
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7cdafc6562b48334d8fb29481eae9e13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -100,7 +100,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2
---- !u!114 &1580329542207719014
+--- !u!114 &7625162213216833644
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,8 +109,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5595158151744463373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22f2ead543dd0f94b8cb2f3beb910247, type: 3}
+  m_Script: {fileID: 11500000, guid: e00e75302bf29e448b6a76c0b45c5d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 200
+  score: 300
+  time: 2
   type: 2
