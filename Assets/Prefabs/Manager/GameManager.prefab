@@ -518,6 +518,7 @@ GameObject:
   - component: {fileID: 137223666008951023}
   - component: {fileID: 3491281534168129975}
   - component: {fileID: 8929296197964086273}
+  - component: {fileID: 1388314196568012068}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: GameController
@@ -568,6 +569,18 @@ MonoBehaviour:
   scoreText: {fileID: 2217630267930062574, guid: ca1019e1d41269f4a94131096d0198c6, type: 3}
   timeText: {fileID: 4003380088002144752, guid: f21c22e34e368ca459df5ef7864fa56b, type: 3}
   spdUpText: {fileID: 8916868223773248878, guid: 429747e3847e3c94388a8699a08d7d0c, type: 3}
+--- !u!114 &1388314196568012068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137223666008951008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27e5c0061707fe41b583a535503f079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2223382955660871355
 GameObject:
   m_ObjectHideFlags: 0

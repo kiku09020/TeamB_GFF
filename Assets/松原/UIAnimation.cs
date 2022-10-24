@@ -8,7 +8,7 @@ public class UIAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TotalScore();
+        
     }
 
     // Update is called once per frame
@@ -27,9 +27,9 @@ public class UIAnimation : MonoBehaviour
         transform.DOScale(1, 0.1f);
     }
 
-    public void TotalScore()
+    public void TotalScore(GameObject obj)
     {
-        transform.DOScale(1.5f, 0.1f);
-        transform.DOScale(1, 0.5f);
+        obj.transform.DOScale(1.5f, 0.1f);
+        obj.transform.DOScale(1, 0.5f);
     }
 }

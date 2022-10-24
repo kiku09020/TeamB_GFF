@@ -26,12 +26,15 @@ public class ScoreManager : MonoBehaviour
     public int NowScore { get => nowScore; }
 
     /* UI */
+    GameObject scoreTextObj;
+
     Text dispScoreText;     // 表示用スコアのテキスト
     Image scoreImage;       // 目標スコアと現在スコアの比較用画像
 
     /* コンポーネント取得用 */
     CanvasManager canvas;
     TextGenerater txtGen;
+    UIAnimation anim;
 
     FishGenerater fishGen;
 
@@ -46,11 +49,12 @@ public class ScoreManager : MonoBehaviour
         /* コンポーネント取得 */
         canvas = uiObj.GetComponent<CanvasManager>();
         txtGen = uiObj.GetComponent<TextGenerater>();
+        anim = uiObj.GetComponent<UIAnimation>();
         fishGen = charaObj.GetComponent<FishGenerater>();
 
         /* 初期化 */
         GameObject scoreObj = canvas.GameCanvas.transform.Find("Back").gameObject;
-        GameObject scoreTextObj = scoreObj.transform.Find("TotalScoreText").gameObject;
+        scoreTextObj = scoreObj.transform.Find("TotalScoreText").gameObject;
         GameObject scoreImgObj = scoreObj.transform.Find("Image").gameObject;
 
         dispScoreText = scoreTextObj.GetComponent<Text>();
@@ -89,6 +93,8 @@ public class ScoreManager : MonoBehaviour
         dispScoreVal = score / 10;      // 表示スコアの増加量指定
 
         CheckTargetScore();             // 目標スコア達成したかどうか
+
+        anim.TotalScore(scoreTextObj);
 	}
 
     // 目標スコアに到達したかどうかを確認する
