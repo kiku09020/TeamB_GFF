@@ -12,6 +12,7 @@ public class DebugManager : MonoBehaviour
     ParticleManager part;
 
     ScoreManager score;
+    TimeManager time;
 
 //-------------------------------------------------------------------
     void Start()
@@ -25,6 +26,7 @@ public class DebugManager : MonoBehaviour
         part = partObj.GetComponent<ParticleManager>();
 
         score = gmObj.GetComponent<ScoreManager>();
+        time = gmObj.GetComponent<TimeManager>();
 
         /* 初期化 */
         
@@ -52,6 +54,10 @@ public class DebugManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S)) {
             score.AddScore(1000);
+        }
+
+        if (Input.GetKeyDown(KeyCode.End)) {
+            time.Timer = 0;
         }
     }
 

@@ -53,7 +53,7 @@ public class JumpArrow : MonoBehaviour
         if (!gm.isTimeUp) {
             TapDown();
 
-            if (cat.state == Cat.State.Ready) {
+            if (cat.state == Cat.State.Pulled || cat.state == Cat.State.Ready) {
                 Tapping();
                 TapUp();
             }
@@ -75,7 +75,7 @@ public class JumpArrow : MonoBehaviour
             tapDownPos = Input.mousePosition;                                   // タップ座標取得
             tapDownPos_World = Camera.main.ScreenToWorldPoint(tapDownPos);      // ワールド座標に変換
 
-            // 
+            // 矢印
             line.enabled = true;
             line.SetPosition(0, transform.position);
             line.SetPosition(1, transform.position);
@@ -87,6 +87,9 @@ public class JumpArrow : MonoBehaviour
     {
         // 入力中
         if (Input.GetMouseButton(0)) {
+            // 中央の猫を引っ張り状態にする
+            cat.state = Cat.State.Pulled;
+
             tappingPos = Input.mousePosition;                                   // 現在のマウス位置
             tappingPos_World = Camera.main.ScreenToWorldPoint(tappingPos);      // ワールド座標に変換
 

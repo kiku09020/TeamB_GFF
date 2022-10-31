@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bec58e29ff2e95148aee84fcd8ca423f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  comboAddLimitCnt: 7
 --- !u!1 &7899309465708641873
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,6 +232,7 @@ GameObject:
   - component: {fileID: 3051567640174828521}
   - component: {fileID: 986096279556895062}
   - component: {fileID: 1018528304296198574}
+  - component: {fileID: 3759933626967961456}
   m_Layer: 8
   m_Name: Cat
   m_TagString: Cat
@@ -380,4 +382,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c07fc0ed6aa7b049bcd8be97d013dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveTime: 0.75
+--- !u!114 &3759933626967961456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7899309465708641873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef99ed413f06e34590ac1062965e06d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

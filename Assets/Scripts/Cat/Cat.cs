@@ -15,10 +15,11 @@ public class Cat : MonoBehaviour
 
     // 猫の状態
     public enum State {
-        OutScrn,      // 画面外
+        OffScrn,        // 画面外
         Wait,           // 待機中
         Ready,          // ジャンプ前
-        Jumped,         // ジャンプ後
+        Pulled,         // 引っ張られてる状態
+        Jumping,        // ジャンプ中
     }
 
     // ジャンプ後の状態
@@ -42,12 +43,12 @@ public class Cat : MonoBehaviour
 
     /* コンポーネント取得用 */
     Rigidbody2D rb;
-    AudioManager aud;
-
     GameManager gm;
+    AudioManager aud;
+    Cat_Animation anim;
 
     CatParameter par;
-    MainCat jump;
+    Cat_Jumping jump;
 
 //-------------------------------------------------------------------
     void Awake()
@@ -59,12 +60,12 @@ public class Cat : MonoBehaviour
 
         /* コンポーネント取得 */
         rb = GetComponent<Rigidbody2D>();
-        aud = audObj.GetComponent<AudioManager>();
-
         gm = gmObj.GetComponent<GameManager>();
+        aud = audObj.GetComponent<AudioManager>();
+        anim = GetComponent<Cat_Animation>();
 
         par = charaObj.GetComponent<CatParameter>();
-        jump = GetComponent<MainCat>();
+        jump = GetComponent<Cat_Jumping>();
 
         /* 初期化 */
 
@@ -83,21 +84,22 @@ public class Cat : MonoBehaviour
     // 状態ごとの処理
     void StateProc()
     {
-        // ジャンプ中
-        if (state == State.Jumped && jumpState == JumpedState.Jump) {
-            vel = rb.velocity;      // 速度取得
-        }
+        switch (state) {
+            case State.Pulled:
+                jump.PrepareJumping();
+                jump.Jump();            // ジャンプ
+                break;
 
-        // 主役猫
-        if (state == State.Ready && jumpState == JumpedState.None) {
-            jump.Jump();
-        }
+            case State.Jumping:
+                vel = rb.velocity;      // 速度取得
 
-        if (state == State.Jumped) {
-            jump.Fall();
-            isOutScrn = par.CheckOutScrn(pos.y);
+                if (jumpState == JumpedState.Jump) {
+                    jump.Rotate(vel.y);     // 回転
+                    jump.Fall();            // 落下
+                }
 
-            Delete();
+                Delete();               // 削除
+                break;
         }
     }
 
@@ -127,8 +129,11 @@ public class Cat : MonoBehaviour
     // 削除
     void Delete()
     {
-        if (IsOutScrn) {
-            Destroy(gameObject);
+        isOutScrn = par.CheckOutScrn(pos.y);        // 画面外判定
+
+        if (isOutScrn) {
+            anim.StopAnimations();          // アニメーション停止
+            Destroy(gameObject);            // 削除
         }
     }
 }

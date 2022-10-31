@@ -22,7 +22,6 @@ public class ScoreManager : MonoBehaviour
     int dispScoreVal;                       // 表示用スコアを増減させる値
 
     /* フラグ */
-    bool timeDecOnce;       // タイム一度のみ
 
 
     /* プロパティ */
@@ -36,7 +35,6 @@ public class ScoreManager : MonoBehaviour
 
     /* コンポーネント取得用 */
     CanvasManager canvas;
-    TimeManager time;
     TextGenerater txtGen;
     UIAnimation anim;
 
@@ -55,7 +53,6 @@ public class ScoreManager : MonoBehaviour
         txtGen = uiObj.GetComponent<TextGenerater>();
         anim = uiObj.GetComponent<UIAnimation>();
         fishGen = charaObj.GetComponent<FishGenerater>();
-        time = GetComponent<TimeManager>();
 
         /* 初期化 */
         GameObject scoreObj = canvas.GameCanvas.transform.Find("Back").gameObject;
@@ -100,12 +97,6 @@ public class ScoreManager : MonoBehaviour
         CheckTargetScore();             // 目標スコア達成したかどうか
 
         anim.TotalScore(scoreTextObj);
-
-        // タイム減らす速度上昇
-        if (spdUpCnt >= spdUpCnt_Thrshld && !timeDecOnce){
-            time.ChangeTimeDecCoef(1.5f);
-            timeDecOnce = true;
-		}
 	}
 
     // 目標スコアに到達したかどうかを確認する

@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /* ジャンプする猫の処理 */
-public class MainCat : MonoBehaviour
+public class Cat_Jumping : MonoBehaviour
 {
     /* 値 */
 
-
     /* コンポーネント取得用 */
     Cat cat;
-    CatParameter par;
     JumpArrow arrow;
+    CatParameter par;
 
     Collider2D col;
     Rigidbody2D rb;
@@ -41,10 +40,10 @@ public class MainCat : MonoBehaviour
     public void Jump()
     {
         // 離した瞬間
-        if (Input.GetMouseButtonUp(0) && cat.IsLanding) {
-            par.existMainCat = false;
-            cat.state = Cat.State.Jumped;
+        if (Input.GetMouseButtonUp(0)) {
+            cat.state = Cat.State.Jumping;
             cat.jumpState = Cat.JumpedState.Jump;
+            par.existMainCat = false;
 
             rb.AddForce(arrow.TapVector);            // ぶっ飛ばす
             cat.PlaySE(AudioEnum.SE_Cat.jump);
@@ -55,9 +54,22 @@ public class MainCat : MonoBehaviour
     public void Fall()
     {
         // 当たり判定なくす
-        if (cat.Vel.y < 0 && cat.jumpState == Cat.JumpedState.Jump) {
+        if (cat.Vel.y < 0) {
             cat.jumpState = Cat.JumpedState.Fall;
             col.isTrigger = true;
         }
+    }
+
+    // ジャンプ中の回転
+    public void Rotate(float value)
+    {
+        var rotSpd = Mathf.Abs(value) / 10;
+        transform.Rotate(0, 0, rotSpd);
+    }
+
+    // ジャンプ準備
+    public void PrepareJumping()
+    {
+        
     }
 }

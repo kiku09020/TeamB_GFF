@@ -35,11 +35,9 @@ public class Cat_Moving : MonoBehaviour
     void FixedUpdate()
     {
         // 範囲外の猫
-        if (cat.state == Cat.State.OutScrn && !par.existMainCat) {
+        if (cat.state == Cat.State.OffScrn && !par.existMainCat) {
             if (!moveOnce_Idle) {
-                transform.DOMove(par.IdlePos, par.MoveTime).SetEase(Ease.InOutSine);     // 移動(仮)
-                transform.DORotate(new Vector3(0, 0, 360), par.MoveTime,RotateMode.FastBeyond360);
-                moveOnce_Idle = true;
+                Move();
             }
 
             // 目的地についたとき
@@ -52,18 +50,36 @@ public class Cat_Moving : MonoBehaviour
         // 待ち猫
         else if (cat.state == Cat.State.Wait && !par.existMainCat) {
             if (!moveOnce_jump) {
-                transform.DOMove(par.JumpPos, par.MoveTime).SetEase(Ease.InOutSine);
-                transform.DORotate(new Vector3(0, 0, 360), par.MoveTime, RotateMode.FastBeyond360);
-                moveOnce_jump = true;
+                Move();
             }
 
             // ついたとき
             if (cat.Pos.x == par.JumpPos.x) {
-                cat.state = Cat.State.Ready;
+                cat.state = Cat.State.Ready;        // 待ち状態にする
                 par.existMainCat = true;
             }
         }
     }
 
 //-------------------------------------------------------------------
+    // 移動
+    void Move()
+    {
+        Vector2 pos = Vector2.zero;     // 目的座標
+
+        switch (cat.state) {
+            case Cat.State.OffScrn:
+                pos = par.IdlePos;
+                moveOnce_Idle = true;
+
+                break;
+            case Cat.State.Wait:
+                pos = par.JumpPos;
+                moveOnce_jump = true;
+                break;
+        }
+
+        transform.DOMove(pos, par.MoveTime).SetEase(Ease.InOutSine);                            // 移動
+        transform.DORotate(new Vector3(0, 0, 360), par.MoveTime, RotateMode.FastBeyond360);     // 回転
+    }
 }

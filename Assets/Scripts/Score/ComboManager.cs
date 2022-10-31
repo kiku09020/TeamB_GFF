@@ -5,6 +5,8 @@ using UnityEngine;
 public class ComboManager : MonoBehaviour
 {
     /* 値 */
+    [SerializeField] int comboAddLimitCnt;         // 加算する限界コンボ数
+
     int comboCnt;
 
     int combodScore;
@@ -33,16 +35,16 @@ public class ComboManager : MonoBehaviour
     }
 
 //-------------------------------------------------------------------
-    void FixedUpdate()
-    {
-        
-    }
-
-//-------------------------------------------------------------------
     // スコアのコンボ処理
     void ComboScore(int score)
     {
-        combodScore = (int)(score * Mathf.Pow(2, comboCnt - 1));
+        // スコア加算コンボ数の限界以下のみ
+        if (comboCnt < comboAddLimitCnt) {
+            combodScore = (int)( score * Mathf.Pow(2, comboCnt - 1) );
+        }
+        else{
+            combodScore = (int)( score * Mathf.Pow(2, comboAddLimitCnt - 1) );
+        }
 
         this.score.AddScore(combodScore);
     }

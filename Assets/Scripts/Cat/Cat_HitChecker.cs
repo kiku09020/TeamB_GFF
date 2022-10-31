@@ -40,7 +40,7 @@ public class Cat_HitChecker : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         // ジャンプ中の猫にのみ適用
-        if (col.gameObject.tag == "Fish" && cat.state == Cat.State.Jumped) {
+        if (col.gameObject.tag == "Fish" && cat.state == Cat.State.Jumping) {
             Fish fish = col.gameObject.GetComponent<Fish>();
             float score = 0;    float time = 0;
 
