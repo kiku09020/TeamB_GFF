@@ -568,9 +568,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destTime_score: 1
   destTime_spdUp: 3
+  destTime_fugu: 3
   scoreText: {fileID: 2217630267930062574, guid: ca1019e1d41269f4a94131096d0198c6, type: 3}
   timeText: {fileID: 4003380088002144752, guid: f21c22e34e368ca459df5ef7864fa56b, type: 3}
   spdUpText: {fileID: 8916868223773248878, guid: 429747e3847e3c94388a8699a08d7d0c, type: 3}
+  cautText: {fileID: 442482963283116678, guid: ff1bf41a0601be54da46f68dc01e06b8, type: 3}
 --- !u!114 &1388314196568012068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,7 +670,7 @@ MonoBehaviour:
   genIntvlMin: 0.4
   intvlDecVal: 0.15
   genXRange: 8
-  genPosY: 30
+  genPosY: 50
   genPrefs:
   - {fileID: 5595158151744463373, guid: e85a4b919276c63419570652e9b0d268, type: 3}
   - {fileID: 825683738461295673, guid: dc22d8806417c064dbf68c3b591f439b, type: 3}
