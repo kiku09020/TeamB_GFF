@@ -103,9 +103,9 @@ MonoBehaviour:
   clps_SE_Cat:
   - {fileID: 8300000, guid: 61890ac643f44634391a5a67f1d49018, type: 3}
   clps_SE_Fish:
-  - {fileID: 8300000, guid: d89bdee43e02ca6419f9bee5c05a29ab, type: 3}
-  - {fileID: 8300000, guid: 367638ed945928647ae7cfb5f1b3c55d, type: 3}
-  - {fileID: 8300000, guid: 367638ed945928647ae7cfb5f1b3c55d, type: 3}
+  - {fileID: 8300000, guid: 78679aee5f764ce49957799354bb6769, type: 3}
+  - {fileID: 8300000, guid: 73112a05a111ba94ca23261dfe121d47, type: 3}
+  - {fileID: 8300000, guid: 78679aee5f764ce49957799354bb6769, type: 3}
   clps_SE_UI:
   - {fileID: 8300000, guid: 727e1ba9d10659143a3cba6dbc62b9bf, type: 3}
   - {fileID: 8300000, guid: 8be3143336b427f43aa07be0d0ed6b55, type: 3}

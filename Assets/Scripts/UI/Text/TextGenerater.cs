@@ -56,41 +56,45 @@ public class TextGenerater : MonoBehaviour
     }
 
     //-------------------------------------------------------------------
-    // スコアテキストの生成
-    public void GenScoreText(ScoreTextType type, float value, Vector2 pos)
+    string TextSetup(float value)
     {
-        GameObject text = null;
-        Vector2 scrnPos = Camera.main.WorldToScreenPoint(pos);      // ワールドからスクリーンに変換
-
         // 符号判定
         string signStr = null;
-        if (Mathf.Sign(value) == 1)
-        {
+        if (Mathf.Sign(value) == 1) {
             signStr = "+";
         }
-        else
-        {
+        else {
             signStr = "-";
         }
 
         // 生成するテキスト指定
         string textStr = signStr + Mathf.Abs(value).ToString();
+        return textStr;
+    }
 
-        switch (type)
-        {
-            case ScoreTextType.score:
-                scoreText.GetComponent<Text>().text = textStr;
-                text = scoreText; break;
+    void InstantiateText(GameObject obj,Vector2 pos)
+    {
+        Vector2 scrnPos = Camera.main.WorldToScreenPoint(pos);      // ワールドからスクリーンに変換
 
-            case ScoreTextType.time:
-                timeText.GetComponent<Text>().text = textStr + "s\n";
-                scrnPos += new Vector2(0, 50);
-                text = timeText; break;
-        }
-
-        GameObject inst = Instantiate(text, scrnPos, Quaternion.identity, prnt_game);      // 生成
-        anim.ScoreUp(inst, scrnPos);
+        GameObject inst = Instantiate(obj, scrnPos, Quaternion.identity, prnt_game);    // 生成
+        anim.ScoreUp(inst, scrnPos);                                                    // アニメーション
         Destroy(inst, destTime_score);                                                        // 削除
+    }
+
+    // スコアテキストの生成
+    public void GenScoreText(float value, Vector2 pos)
+    {
+        scoreText.GetComponent<Text>().text = TextSetup(value);     // テキスト設定
+        InstantiateText(scoreText, pos);
+    }
+
+    // タイムテキストの生成
+    public void GenTimeText(float value, Vector2 pos)
+    {
+        timeText.GetComponent<Text>().text = TextSetup(value)+"s";
+
+        pos += new Vector2(0, 1f);
+        InstantiateText(timeText, pos);
     }
 
     // 速度アップテキストの生成

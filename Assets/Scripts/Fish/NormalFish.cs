@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class NormalFish : Fish
 {
-	protected override void EatenComboProc()
+	protected override void EatenComboProc(ComboManager combo,TextGenerater txtGen)
 	{
-		
+		combo.Combo(AddedScore, AddedTime);
+
+		txtGen.GenScoreText(combo.CombodScore, transform.position);
+		txtGen.GenTimeText(combo.CombodTime, transform.position);
 	}
 }

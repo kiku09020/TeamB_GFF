@@ -80,12 +80,12 @@ public abstract class Fish : MonoBehaviour
 
     //-------------------------------------------------------------------
     // 捕食
-    protected abstract void EatenComboProc();       // 捕食時のコンボ処理
+    protected abstract void EatenComboProc(ComboManager combo,TextGenerater txtGen);       // 捕食時のコンボ処理
 
     // 捕食時の処理
-    public void Eaten()
+    public void Eaten(ComboManager combo,TextGenerater txtGen)
     {
-        EatenComboProc();
+        EatenComboProc(combo, txtGen);
 
         PlayEatenSound();
         PlayEatenParticle();
