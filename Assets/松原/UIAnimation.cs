@@ -66,4 +66,18 @@ public class UIAnimation : MonoBehaviour
         obj.transform.DOScale(1, 0.5f);
         text.DOColor(Color.white, 0.5f);
     }
+
+    public void Result(GameObject obj)
+    {
+        obj.transform.localScale = Vector2.zero;
+        obj.transform.DOScale(Vector2.one, 1f).SetEase(Ease.OutBounce);
+    }
+
+    public void FuguCaution(GameObject obj)
+    {
+        var sequence = DOTween.Sequence();
+
+        sequence.Append(obj.transform.DOScale(1.5f, 0.4f).SetLoops(2,LoopType.Restart));
+        sequence.Append(obj.transform.DOScale(0f, 0.2f));
+    }
 }

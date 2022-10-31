@@ -116,6 +116,7 @@ public class TimeManager : MonoBehaviour
         gm.isResult = true;
         gm.isTimeUp = false;
         aud.PauseAudio(true);
+        anim.Result(canvas.ResultCanvas);
     }
 
     //-------------------------------------------------------------------
