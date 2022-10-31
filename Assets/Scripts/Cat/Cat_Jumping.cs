@@ -63,7 +63,7 @@ public class Cat_Jumping : MonoBehaviour
     // ジャンプ中の回転
     public void Rotate(float value)
     {
-        var rotSpd = Mathf.Abs(value) / 10;
+        var rotSpd = Mathf.Abs(value) / 7.5f;
         transform.Rotate(0, 0, rotSpd);
     }
 

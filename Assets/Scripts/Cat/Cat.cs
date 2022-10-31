@@ -93,7 +93,7 @@ public class Cat : MonoBehaviour
             case State.Jumping:
                 vel = rb.velocity;      // 速度取得
 
-                if (jumpState == JumpedState.Jump) {
+                if (jumpState == JumpedState.Jump && !gm.isPause) {
                     jump.Rotate(vel.y);     // 回転
                     jump.Fall();            // 落下
                 }

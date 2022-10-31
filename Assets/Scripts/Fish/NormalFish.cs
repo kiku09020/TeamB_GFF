@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class NormalFish : Fish
 {
-
+	protected override void EatenComboProc()
+	{
+		
+	}
 }

@@ -114,6 +114,7 @@ public class FishGenerater : MonoBehaviour
     {
         if (nowGenIntvl > genIntvlMin) {
             nowGenIntvl -= intvlDecVal;
+            genProb_Fugu += 0.01f;
 
             print("InterVal = "+ nowGenIntvl);
         }

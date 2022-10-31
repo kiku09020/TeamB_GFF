@@ -84,14 +84,12 @@ public class TimeManager : MonoBehaviour
             int timerInt = (int)timer;
             timerText.text = timerInt.ToString();
 
-            if (timer <= 11 && !timeOnceFlg)
-            {
+            if (timer <= 11 && !timeOnceFlg) {
                 timeOnceFlg = true;
-                anim.TimerIn(timerTextObj,timerText);
+                anim.TimerIn(timerTextObj, timerText);
             }
 
-            else
-            {
+            else if (timer > 11 && timeOnceFlg) {
                 timeOnceFlg = false;
                 anim.TimerOut(timerTextObj,timerText);
             }

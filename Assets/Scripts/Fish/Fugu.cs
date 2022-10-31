@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Fugu : Fish
 {
+	protected override void EatenComboProc()
+	{
 
+	}
 }

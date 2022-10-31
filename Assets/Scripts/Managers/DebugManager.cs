@@ -57,7 +57,7 @@ public class DebugManager : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.End)) {
-            time.Timer = 0;
+            time.Timer = 12;
         }
     }
 

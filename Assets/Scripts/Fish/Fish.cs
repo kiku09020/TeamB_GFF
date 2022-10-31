@@ -8,7 +8,7 @@ public abstract class Fish : MonoBehaviour
     /* 値 */
     [SerializeField] protected int      score;      // スコア
     [SerializeField] protected float    time;       // 増加、減少するタイム
-    [SerializeField] protected FishType     type;       // タイプ
+    [SerializeField] protected FishType type;       // タイプ
 
     // 魚の種類
     public enum FishType {
@@ -29,9 +29,19 @@ public abstract class Fish : MonoBehaviour
     FishParameter par;
 
     //-------------------------------------------------------------------
-    protected virtual void Start()
+    protected void Start()
     {
-        Init();
+        /* オブジェクト取得 */
+        GameObject gmObj = GameObject.Find("GameManager");
+        GameObject audObj = gmObj.transform.Find("AudioManager").gameObject;
+        GameObject charaObj = gmObj.transform.Find("CharaManager").gameObject;
+
+        /* コンポーネント取得 */
+        aud = audObj.GetComponent<AudioManager>();
+
+        par = charaObj.GetComponent<FishParameter>();
+
+        /* 初期化 */
     }
 
     void FixedUpdate()
@@ -40,22 +50,7 @@ public abstract class Fish : MonoBehaviour
         CheckOutScrn();
     }
 
-    protected void Init()
-    {
-        /* オブジェクト取得 */
-        GameObject gmObj = GameObject.Find("GameManager");
-        GameObject audObj = gmObj.transform.Find("AudioManager").gameObject;
-        GameObject charaObj = gmObj.transform.Find("CharaManager").gameObject;
-
-        /* コンポーネント取得 */
-        aud     = audObj.GetComponent<AudioManager>();
-
-
-        par     = charaObj.GetComponent<FishParameter>();
-
-        /* 初期化 */
-    }
-
+    //-------------------------------------------------------------------
     // 落下処理
     protected void Fall()
     {
@@ -70,6 +65,7 @@ public abstract class Fish : MonoBehaviour
         }
 	}
 
+    //-------------------------------------------------------------------
     // 効果音の指定
     void PlayEatenSound()
     {
@@ -84,9 +80,16 @@ public abstract class Fish : MonoBehaviour
 
     //-------------------------------------------------------------------
     // 捕食
+    protected abstract void EatenComboProc();       // 捕食時のコンボ処理
+
+    // 捕食時の処理
     public void Eaten()
     {
+        EatenComboProc();
+
         PlayEatenSound();
         PlayEatenParticle();
+
+        Destroy(gameObject);
     }
 }

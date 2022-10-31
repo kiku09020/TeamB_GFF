@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class RareFish : Fish
 {
+	protected override void EatenComboProc()
+	{
 
+	}
 }
