@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class UIAnimation : MonoBehaviour
@@ -50,17 +51,19 @@ public class UIAnimation : MonoBehaviour
 
         var posY = scrnPos.y + 100;
 
-        sequence.Append(obj.transform.DOMoveY(posY, 0.5f).SetEase(Ease.InCubic));
+        sequence.Append(obj.transform.DOMoveY(posY, 0.5f).SetEase(Ease.OutQuad));
         sequence.Append(obj.transform.DOScale(0, 0.5f));
     }
 
-    public void TimerIn(GameObject obj)
+    public void TimerIn(GameObject obj,Text text)
     {
         obj.transform.DOScale(1.5f, 0.5f);
+        text.DOColor(Color.red, 0.5f);
     }
 
-    public void TimerOut(GameObject obj)
+    public void TimerOut(GameObject obj,Text text)
     {
         obj.transform.DOScale(1, 0.5f);
+        text.DOColor(Color.white, 0.5f);
     }
 }
