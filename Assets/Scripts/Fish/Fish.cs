@@ -6,9 +6,9 @@ using UnityEngine;
 public abstract class Fish : MonoBehaviour
 {
     /* 値 */
-    [SerializeField] protected int      score;      // スコア
-    [SerializeField] protected float    time;       // 増加、減少するタイム
-    [SerializeField] protected FishType type;       // タイプ
+    [SerializeField] int      score;      // スコア
+    [SerializeField] float    time;       // 増加、減少するタイム
+    [SerializeField] FishType type;       // タイプ
 
     // 魚の種類
     public enum FishType {
@@ -18,13 +18,14 @@ public abstract class Fish : MonoBehaviour
     }
 
     /* プロパティ */
-    public int AddedScore { get => score; }
-    public float AddedTime { get => time; }
-    public FishType Type { get => type; }
+    public int AddedScore   { get => score; }
+    public float AddedTime  { get => time; }
+    public FishType Type    { get => type; }
 
     /* コンポーネント取得用 */
-    AudioManager aud;
+    FishAudio aud;
     ParticleManager part;
+    EffekseerParticleManager esPart;
 
     FishParameter par;
 
@@ -35,10 +36,12 @@ public abstract class Fish : MonoBehaviour
         GameObject gmObj = GameObject.Find("GameManager");
         GameObject audObj = gmObj.transform.Find("AudioManager").gameObject;
         GameObject charaObj = gmObj.transform.Find("CharaManager").gameObject;
+        GameObject partObj = gmObj.transform.Find("ParticleManager").gameObject;
+        esPart = partObj.GetComponent<EffekseerParticleManager>();
 
         /* コンポーネント取得 */
-        aud = audObj.GetComponent<AudioManager>();
 
+        aud = GetComponent<FishAudio>();
         par = charaObj.GetComponent<FishParameter>();
 
         /* 初期化 */
@@ -47,35 +50,31 @@ public abstract class Fish : MonoBehaviour
     void FixedUpdate()
     {
         Fall();
-        CheckOutScrn();
+        InWater();
     }
 
     //-------------------------------------------------------------------
     // 落下処理
-    protected void Fall()
+    void Fall()
     {
         transform.Translate(new Vector2(0, -par.FallSpd));
     }
 
     // 画面外判定
-    protected void CheckOutScrn()
+    void InWater()
     {
         if (transform.position.y < par.DelY) {
+            PlayEatenParticle(EffekseerParticleManager.EffectType.water, transform.position);
             Destroy(gameObject);
         }
 	}
 
     //-------------------------------------------------------------------
-    // 効果音の指定
-    void PlayEatenSound()
-    {
-        aud.PlaySE(AudioEnum.AudSrc.SE_Fish, (int)type);
-    }
 
     // パーティクルの指定
-    void PlayEatenParticle()
+    void PlayEatenParticle(EffekseerParticleManager.EffectType type,Vector2 pos)
     {
-
+        esPart.PlayEffect(type, pos);
     }
 
     //-------------------------------------------------------------------
@@ -86,9 +85,6 @@ public abstract class Fish : MonoBehaviour
     public void Eaten(ComboManager combo,TextGenerater txtGen)
     {
         EatenComboProc(combo, txtGen);
-
-        PlayEatenSound();
-        PlayEatenParticle();
 
         Destroy(gameObject);
     }

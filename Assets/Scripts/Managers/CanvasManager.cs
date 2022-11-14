@@ -9,11 +9,13 @@ public class CanvasManager : MonoBehaviour
     GameObject uiCnvs;
     GameObject pauseCnvs;
     GameObject resultCnvs;
+    GameObject startingCnvs;
 
     /* プロパティ */
-    public GameObject CtrlCanvas    { get => ctrlCnvs; }
-    public GameObject GameCanvas    { get => uiCnvs; }
-    public GameObject ResultCanvas  { get => resultCnvs; }
+    public GameObject CtrlCanvas => ctrlCnvs;
+    public GameObject GameCanvas => uiCnvs;
+    public GameObject ResultCanvas => resultCnvs;
+    public GameObject StartingCanvas => startingCnvs;
 
     //-------------------------------------------------------------------
     void Awake()
@@ -26,6 +28,7 @@ public class CanvasManager : MonoBehaviour
         uiCnvs    = parent.Find("GameUICanvas").gameObject;
         pauseCnvs = parent.Find("PauseCanvas").gameObject;
         resultCnvs = parent.Find("ResultCanvas").gameObject;
+        startingCnvs = parent.Find("StartingCanvas").gameObject;
 
         /* 初期化 */
         pauseCnvs.SetActive(false);
@@ -61,5 +64,11 @@ public class CanvasManager : MonoBehaviour
     {
         uiCnvs.SetActive(false);
         resultCnvs.SetActive(true);
+	}
+
+    // スタート時のカウントダウン
+    public void StartingTimerExit()
+    {
+        startingCnvs.SetActive(false);
 	}
 }

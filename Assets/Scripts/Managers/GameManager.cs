@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
 
     /* フラグ */
+    [HideInInspector] public bool isStarting;   // スタート時
     [HideInInspector] public bool isTimeUp;     // タイムアップ
     [HideInInspector] public bool isPause;      // ポーズ中か
     [HideInInspector] public bool isResult;     // リザルト画面中か
@@ -21,8 +22,10 @@ public class GameManager : MonoBehaviour
     AudioManager aud;
 
     ScoreManager score;
+    SaveData data;
 
     Text scoreText;
+    Text highScoreText;
 
     /* プロパティ */
 
@@ -36,11 +39,14 @@ public class GameManager : MonoBehaviour
         aud = transform.Find("AudioManager").GetComponent<AudioManager>();
 
         score = GetComponent<ScoreManager>();
+        data = GetComponent<DataManager>().data;
 
         /* 初期化 */
         Transform resultCnvs = cnvs.ResultCanvas.transform;
         scoreText = resultCnvs.Find("TextScore").GetComponent<Text>();
-        
+        highScoreText = resultCnvs.Find("TextHighScore").GetComponent<Text>();
+
+        isStarting = true;
     }
 
 //-------------------------------------------------------------------
@@ -54,6 +60,7 @@ public class GameManager : MonoBehaviour
 
         if (isResult && !rsltOnce){
             scoreText.text = score.NowScore.ToString();
+            highScoreText.text = data.highScore.ToString();
             cnvs.TransitionResult();
 
             rsltOnce = true;        // 一度のみ

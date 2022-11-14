@@ -8,7 +8,6 @@ public class AudioManager : MonoBehaviour {
     [Header("AudioClip")]
     [SerializeField] List<AudioClip> clps_BGM;
     [SerializeField] List<AudioClip> clps_SE_Cat;
-    [SerializeField] List<AudioClip> clps_SE_Fish;
     [SerializeField] List<AudioClip> clps_SE_UI;
     List<List<AudioClip>> clpLists;
 
@@ -16,7 +15,7 @@ public class AudioManager : MonoBehaviour {
     void Start()
     {
         // List<List<AudioClip>>にList<AudioClip>を格納
-        clpLists = new List<List<AudioClip>>() { clps_BGM, clps_SE_Cat, clps_SE_Fish, clps_SE_UI };
+        clpLists = new List<List<AudioClip>>() { clps_BGM, clps_SE_Cat, clps_SE_UI };
 
         // BGM再生
         PlayBGM(AudioEnum.BGM.bgm1, true);
@@ -29,7 +28,7 @@ public class AudioManager : MonoBehaviour {
         AudioSource audSrc = AudSrcs[(int)AudioEnum.AudSrc.BGM];
 
         // ループの有無
-        audSrc.loop = (loop) ? true : false;
+        audSrc.loop = loop;
 
         // クリップ指定
         audSrc.clip = clps_BGM[(int)bgm];

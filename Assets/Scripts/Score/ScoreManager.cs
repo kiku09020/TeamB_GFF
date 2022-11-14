@@ -34,11 +34,13 @@ public class ScoreManager : MonoBehaviour
     Image scoreImage;       // 目標スコアと現在スコアの比較用画像
 
     /* コンポーネント取得用 */
+    GameManager gm;
     CanvasManager canvas;
     TextGenerater txtGen;
     UIAnimation anim;
 
     FishGenerater fishGen;
+    SaveData data;
 
 //-------------------------------------------------------------------
     void Start()
@@ -49,10 +51,12 @@ public class ScoreManager : MonoBehaviour
         GameObject charaObj = gmObj.transform.Find("CharaManager").gameObject;
 
         /* コンポーネント取得 */
+        gm = GetComponent<GameManager>();
         canvas = uiObj.GetComponent<CanvasManager>();
         txtGen = uiObj.GetComponent<TextGenerater>();
         anim = uiObj.GetComponent<UIAnimation>();
         fishGen = charaObj.GetComponent<FishGenerater>();
+        data = GetComponent<DataManager>().data;
 
         /* 初期化 */
         GameObject scoreObj = canvas.GameCanvas.transform.Find("Back").gameObject;
@@ -70,6 +74,12 @@ public class ScoreManager : MonoBehaviour
     void FixedUpdate()
     {
         DispScore();
+
+        if(gm.isTimeUp){
+            if(data.highScore<nowScore){
+                data.highScore = nowScore;
+			}
+		}
     }
 
     //-------------------------------------------------------------------
