@@ -15,6 +15,7 @@ public class AudioEnum {
     // 猫
     public enum SE_Cat {
         jump,
+        eat,
     }
 
     // 魚

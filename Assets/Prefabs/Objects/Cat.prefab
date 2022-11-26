@@ -356,6 +356,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd0088ab98f76e4a9e2f57489e1c08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  catSprites:
+  - {fileID: 21300000, guid: e6533e0cedfca734883a9be0655c6b83, type: 3}
+  - {fileID: 21300000, guid: 1112cde03fbdf484c829acab88693125, type: 3}
+  - {fileID: 21300000, guid: fecc11f2a3deef04e8c9cead9ef8af76, type: 3}
+  - {fileID: 21300000, guid: 2bee89789ca516f4683bb571d8ccbcad, type: 3}
   state: 0
   jumpState: 0
 --- !u!114 &986096279556895062

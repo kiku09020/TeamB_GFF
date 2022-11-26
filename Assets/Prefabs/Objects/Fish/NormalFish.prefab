@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5595158151744463373, guid: e85a4b919276c63419570652e9b0d268, type: 3}
       propertyPath: m_Name
-      value: Fish (1)
+      value: NormalFish
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e85a4b919276c63419570652e9b0d268, type: 3}

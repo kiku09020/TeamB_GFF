@@ -84,8 +84,11 @@ public abstract class Fish : MonoBehaviour
     // 捕食時の処理
     public void Eaten(ComboManager combo,TextGenerater txtGen)
     {
+        aud.PlayEatenAudio(Type);
+
         EatenComboProc(combo, txtGen);
 
-        Destroy(gameObject);
+
+        Destroy(gameObject, 0.5f);
     }
 }

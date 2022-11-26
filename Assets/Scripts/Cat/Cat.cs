@@ -9,6 +9,8 @@ public class Cat : MonoBehaviour
     Vector2 pos;
     Vector2 vel;            // 現在の速度
 
+    [SerializeField] List<Sprite> catSprites = new List<Sprite>();
+
     // 状態
     public State state;
     public JumpedState jumpState;
@@ -68,7 +70,11 @@ public class Cat : MonoBehaviour
         jump = GetComponent<Cat_Jumping>();
 
         /* 初期化 */
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
 
+        var index = Random.Range(0, catSprites.Count);
+
+        sr.sprite = catSprites[index];
     }
 
 //-------------------------------------------------------------------
