@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     {
         if (isTimeUp && !timeupOnce){
             cnvs.TimeUp();
+            aud.PlaySE(AudioEnum.AudSrc.SE_UI, (int) AudioEnum.SE_UI.hue);
 
             timeupOnce = true;
 		}

@@ -11,6 +11,7 @@ public class ParticleManager : MonoBehaviour
     // パーティクル一覧
     public enum PartNames {
         circle,
+        get,
     }
 
     /* コンポーネント取得用 */

@@ -3,7 +3,6 @@ public class AudioEnum {
     public enum AudSrc {
         BGM,
         SE_Cat,
-        SE_Fish,
         SE_UI,
     }
 
@@ -18,13 +17,6 @@ public class AudioEnum {
         eat,
     }
 
-    // 魚
-    public enum SE_Fish {
-        eaten,
-        damage,
-        rare
-    }
-
     // UI
     public enum SE_UI {
         click,
@@ -33,5 +25,7 @@ public class AudioEnum {
         pico,
         caution,
         clear,
+        hue,
+
     }
 }

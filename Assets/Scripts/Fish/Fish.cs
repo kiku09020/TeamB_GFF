@@ -42,6 +42,7 @@ public abstract class Fish : MonoBehaviour
         /* コンポーネント取得 */
 
         aud = GetComponent<FishAudio>();
+        part = partObj.GetComponent<ParticleManager>();
         par = charaObj.GetComponent<FishParameter>();
 
         /* 初期化 */
@@ -85,6 +86,7 @@ public abstract class Fish : MonoBehaviour
     public void Eaten(ComboManager combo,TextGenerater txtGen)
     {
         aud.PlayEatenAudio(Type);
+        part.PlayPart(ParticleManager.PartNames.get, transform.position);
 
         EatenComboProc(combo, txtGen);
 

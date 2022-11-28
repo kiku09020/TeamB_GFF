@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partPrfbs:
   - {fileID: 5089954598309825299, guid: 2fb013020a331da4a8f8198971cf8df8, type: 3}
+  - {fileID: 5089954598309825299, guid: 2d2f50519372f6143b7743e27601883f, type: 3}
 --- !u!114 &7966770080450901227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,11 +112,8 @@ MonoBehaviour:
   - {fileID: 137223664298462452}
   - {fileID: 2024275739056814171}
   - {fileID: 1082058878237009205}
-  - {fileID: 1082058878237009205}
   clps_BGM:
-  - {fileID: 8300000, guid: abeeb0836d6e9034aa61de78cd5f1eb8, type: 3}
-  - {fileID: 8300000, guid: b33fc3aa95a907e45a58915240001cd4, type: 3}
-  - {fileID: 8300000, guid: b4f6e30f44065214caae1135ca12e118, type: 3}
+  - {fileID: 8300000, guid: 1cb1047aada93f945a6b5710df3a4864, type: 3}
   clps_SE_Cat:
   - {fileID: 8300000, guid: 61890ac643f44634391a5a67f1d49018, type: 3}
   - {fileID: 8300000, guid: 78679aee5f764ce49957799354bb6769, type: 3}
@@ -126,6 +124,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9b7a720f0a1a305479430574105251bc, type: 3}
   - {fileID: 8300000, guid: b8d0a2eeaf1006b48bd6d8f51430e8aa, type: 3}
   - {fileID: 8300000, guid: 43c83fa1729bddb4a913f253306cc0b5, type: 3}
+  - {fileID: 8300000, guid: 06f6b1c6e5560f5469d5a9522562a38e, type: 3}
 --- !u!82 &137223664298462452
 AudioSource:
   m_ObjectHideFlags: 0
@@ -135,7 +134,7 @@ AudioSource:
   m_GameObject: {fileID: 137223664298462454}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3380067536102212119, guid: 64bce045072c26246b648a440f5e2e5b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -688,7 +687,7 @@ MonoBehaviour:
   genXRange: 8
   genPosY: 45
   genPrefs:
-  - {fileID: 5595158151744463373, guid: e85a4b919276c63419570652e9b0d268, type: 3}
+  - {fileID: 7223406842295151626, guid: 90197e2fae3cd434eab8e042e09537fa, type: 3}
   - {fileID: 825683738461295673, guid: dc22d8806417c064dbf68c3b591f439b, type: 3}
   - {fileID: 5595158151744463373, guid: 98b960f5736fd0c4aba0d223af9fa686, type: 3}
   genProb_Fugu: 0.15
