@@ -153,7 +153,7 @@ public class TimeManager : MonoBehaviour
 		yield return new WaitForSeconds(transitionTime);
 		gm.isResult = true;
 		gm.isTimeUp = false;
-		aud.PauseAudio(true);
+
 		anim.Result(canvas.ResultCanvas);
 	}
 

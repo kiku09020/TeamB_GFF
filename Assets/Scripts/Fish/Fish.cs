@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 // 普通の魚、ふぐ、レア魚の親クラスです
 public abstract class Fish : MonoBehaviour
@@ -34,7 +35,6 @@ public abstract class Fish : MonoBehaviour
     {
         /* オブジェクト取得 */
         GameObject gmObj = GameObject.Find("GameManager");
-        GameObject audObj = gmObj.transform.Find("AudioManager").gameObject;
         GameObject charaObj = gmObj.transform.Find("CharaManager").gameObject;
         GameObject partObj = gmObj.transform.Find("ParticleManager").gameObject;
         esPart = partObj.GetComponent<EffekseerParticleManager>();
@@ -85,12 +85,12 @@ public abstract class Fish : MonoBehaviour
     // 捕食時の処理
     public void Eaten(ComboManager combo,TextGenerater txtGen)
     {
-        aud.PlayEatenAudio(Type);
+        aud.PlayEatenAudio(type);
         part.PlayPart(ParticleManager.PartNames.get, transform.position);
 
         EatenComboProc(combo, txtGen);
 
-
+        transform.DOScale(Vector2.zero, 0.3f);
         Destroy(gameObject, 0.5f);
     }
 }

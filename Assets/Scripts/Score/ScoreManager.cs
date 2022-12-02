@@ -42,6 +42,8 @@ public class ScoreManager : MonoBehaviour
     FishGenerater fishGen;
     SaveData data;
 
+    AudioManager aud;
+
 //-------------------------------------------------------------------
     void Start()
     {
@@ -49,6 +51,7 @@ public class ScoreManager : MonoBehaviour
         GameObject gmObj = GameObject.Find("GameManager");
         GameObject uiObj = gmObj.transform.Find("UIManager").gameObject;
         GameObject charaObj = gmObj.transform.Find("CharaManager").gameObject;
+        GameObject audObj = gmObj.transform.Find("AudioManager").gameObject;
 
         /* コンポーネント取得 */
         gm = GetComponent<GameManager>();
@@ -57,6 +60,7 @@ public class ScoreManager : MonoBehaviour
         anim = uiObj.GetComponent<UIAnimation>();
         fishGen = charaObj.GetComponent<FishGenerater>();
         data = GetComponent<DataManager>().data;
+        aud = audObj.GetComponent<AudioManager>();
 
         /* 初期化 */
         GameObject scoreObj = canvas.GameCanvas.transform.Find("Back").gameObject;
@@ -133,6 +137,8 @@ public class ScoreManager : MonoBehaviour
 
             fishGen.ChangeSpd();                // 速度変更
             txtGen.GenSpdupText();              // 速度アップテキスト生成
+
+            aud.PlaySE(AudioEnum.AudSrc.SE_UI, (int)AudioEnum.SE_UI.spd);
         }
     }
 }

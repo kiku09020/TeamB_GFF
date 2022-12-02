@@ -26,6 +26,6 @@ public class AudioEnum {
         caution,
         clear,
         hue,
-
+        spd,
     }
 }

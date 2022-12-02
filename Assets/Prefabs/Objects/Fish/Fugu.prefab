@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1189906611
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f016b0872a8e1504891a3eac9da6dcbb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -228,6 +228,6 @@ MonoBehaviour:
   source: {fileID: 1944792029022932017}
   eatenSounds:
   - {fileID: 8300000, guid: 367638ed945928647ae7cfb5f1b3c55d, type: 3}
-  - {fileID: 8300000, guid: 40bf5c6ddab3d0f44b8ef5dc817cd6cd, type: 3}
+  - {fileID: 8300000, guid: b78dd4962506fe841ab0f2063064da4e, type: 3}
   - {fileID: 8300000, guid: 1957d9443e61e854fa0845c4133cdbf3, type: 3}
   waterSounds: []

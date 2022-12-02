@@ -115,7 +115,7 @@ MonoBehaviour:
   clps_BGM:
   - {fileID: 8300000, guid: 1cb1047aada93f945a6b5710df3a4864, type: 3}
   clps_SE_Cat:
-  - {fileID: 8300000, guid: 61890ac643f44634391a5a67f1d49018, type: 3}
+  - {fileID: 8300000, guid: be86c3dadaa269d4ca4d41679cb61355, type: 3}
   - {fileID: 8300000, guid: 78679aee5f764ce49957799354bb6769, type: 3}
   clps_SE_UI:
   - {fileID: 8300000, guid: 727e1ba9d10659143a3cba6dbc62b9bf, type: 3}
@@ -125,6 +125,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b8d0a2eeaf1006b48bd6d8f51430e8aa, type: 3}
   - {fileID: 8300000, guid: 43c83fa1729bddb4a913f253306cc0b5, type: 3}
   - {fileID: 8300000, guid: 06f6b1c6e5560f5469d5a9522562a38e, type: 3}
+  - {fileID: 8300000, guid: f0198c83514e54741a5e2b772348d4bd, type: 3}
 --- !u!82 &137223664298462452
 AudioSource:
   m_ObjectHideFlags: 0
@@ -681,9 +682,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a4db164924019e46983f2916feeb50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intervalStart: 1.5
-  genIntvlMin: 0.4
-  intvlDecVal: 0.15
+  intervalStart: 1
+  genIntvlMin: 0.25
+  intvlDecVal: 0.07
   genXRange: 8
   genPosY: 45
   genPrefs:
@@ -691,6 +692,7 @@ MonoBehaviour:
   - {fileID: 825683738461295673, guid: dc22d8806417c064dbf68c3b591f439b, type: 3}
   - {fileID: 5595158151744463373, guid: 98b960f5736fd0c4aba0d223af9fa686, type: 3}
   genProb_Fugu: 0.15
+  genProb_Fugu_IncVal: 0.02
   genProb_Rare: 0.01
 --- !u!114 &7600844812621097769
 MonoBehaviour:
@@ -704,9 +706,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc2c52cceb066f478410e2b6e823c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpdStart: 0.1
+  fallSpdStart: 0.15
   fallSpdIncVal: 0.01
-  fallSpdMax: 0.3
+  fallSpdMax: 0.35
   delY: -10
 --- !u!1001 &5664595408795085145
 PrefabInstance:

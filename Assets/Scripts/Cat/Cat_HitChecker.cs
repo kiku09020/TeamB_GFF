@@ -44,7 +44,6 @@ public class Cat_HitChecker : MonoBehaviour
             Fish fish = col.gameObject.GetComponent<Fish>();
 
             fish.Eaten(combo, txtGen);
-            Destroy(col.gameObject,0.1f);
         }
     }
 }

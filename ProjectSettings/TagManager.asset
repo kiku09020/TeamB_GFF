@@ -51,6 +51,9 @@ TagManager:
   - name: BG
     uniqueID: 2370915385
     locked: 0
+  - name: ryousi
+    uniqueID: 2456563737
+    locked: 0
   - name: Fish
     uniqueID: 3105060685
     locked: 0

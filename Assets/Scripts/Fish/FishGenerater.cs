@@ -23,6 +23,7 @@ public class FishGenerater : MonoBehaviour
 
     [Header("生成確率")]
     [SerializeField] float genProb_Fugu;
+    [SerializeField] float genProb_Fugu_IncVal;
     [SerializeField] float genProb_Rare;
 
     // 生成するオブジェクトの親
@@ -114,7 +115,7 @@ public class FishGenerater : MonoBehaviour
     {
         if (nowGenIntvl > genIntvlMin) {
             nowGenIntvl -= intvlDecVal;
-            genProb_Fugu += 0.01f;
+            genProb_Fugu += genProb_Fugu_IncVal;
 
             print("InterVal = "+ nowGenIntvl);
         }
