@@ -470,6 +470,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Retry
       objectReference: {fileID: 0}
+    - target: {fileID: 3046351684032854423, guid: aaab4fd79c7928b4d8b3b026c23eb3de, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046351684032854423, guid: aaab4fd79c7928b4d8b3b026c23eb3de, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046351684032854423, guid: aaab4fd79c7928b4d8b3b026c23eb3de, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046351684032854423, guid: aaab4fd79c7928b4d8b3b026c23eb3de, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046351684032854423, guid: aaab4fd79c7928b4d8b3b026c23eb3de, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046351684032854423, guid: aaab4fd79c7928b4d8b3b026c23eb3de, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046351684032854423, guid: aaab4fd79c7928b4d8b3b026c23eb3de, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3158546674365520074, guid: aaab4fd79c7928b4d8b3b026c23eb3de, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -553,6 +581,14 @@ PrefabInstance:
     - target: {fileID: 3158546674365520074, guid: aaab4fd79c7928b4d8b3b026c23eb3de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3457942176667374192, guid: aaab4fd79c7928b4d8b3b026c23eb3de, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163740622954861942, guid: aaab4fd79c7928b4d8b3b026c23eb3de, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6163740622954861942, guid: aaab4fd79c7928b4d8b3b026c23eb3de, type: 3}
       propertyPath: m_FontData.m_Font
