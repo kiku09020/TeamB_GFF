@@ -11,7 +11,13 @@ public class DataManager : MonoBehaviour {
     void Awake()
     {
         // パス名取得
+#if UNITY_EDITOR
         filepath = Application.dataPath + "/" + fileName;
+
+#elif UNITY_ANDROID
+        filepath = Application.persistentDataPath + "/" + fileName;    
+
+#endif
 
         // ファイルがないとき、ファイル作成
         if (!File.Exists(filepath)) {
