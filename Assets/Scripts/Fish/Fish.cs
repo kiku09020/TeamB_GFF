@@ -64,6 +64,10 @@ public abstract class Fish : MonoBehaviour
     // 画面外判定
     void InWater()
     {
+        if (transform.position.y < par.DelY + 1) {
+            transform.DOScale(Vector2.zero, 0.3f);
+		}
+
         if (transform.position.y < par.DelY) {
             PlayEatenParticle(EffekseerParticleManager.EffectType.water, transform.position);
             Destroy(gameObject);

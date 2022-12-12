@@ -113,7 +113,7 @@ MonoBehaviour:
   - {fileID: 2024275739056814171}
   - {fileID: 1082058878237009205}
   clps_BGM:
-  - {fileID: 8300000, guid: 1cb1047aada93f945a6b5710df3a4864, type: 3}
+  - {fileID: 8300000, guid: 9e5766e9dffd6d844a42ece846b62445, type: 3}
   clps_SE_Cat:
   - {fileID: 8300000, guid: be86c3dadaa269d4ca4d41679cb61355, type: 3}
   - {fileID: 8300000, guid: 78679aee5f764ce49957799354bb6769, type: 3}
@@ -133,7 +133,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137223664298462454}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -3380067536102212119, guid: 64bce045072c26246b648a440f5e2e5b, type: 2}
   m_audioClip: {fileID: 0}
